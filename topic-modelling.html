@@ -1,0 +1,1108 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Topic Modelling &#8212; Web Mining</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Materi tentang Webmining" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Web Mining</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Materi tentang Webmining
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Topic Modelling
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftopic-modelling.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/topic-modelling.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pengertian-topic-modelling">
+   Pengertian
+   <em>
+    Topic Modelling
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-topic-modelling">
+   Step
+   <em>
+    Topic Modelling
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#crawling-data">
+   1.
+   <em>
+    Crawling Data
+   </em>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-crawling-data">
+     Pengertian
+     <em>
+      Crawling Data
+     </em>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-crawling-data">
+     <em>
+      Step Crawling Data
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mencari-url-yang-dituju">
+       Mencari URL yang dituju.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-scrapy">
+       Install scrapy
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#membuat-project-baru">
+       Membuat project baru
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#membuat-file-spider-baru">
+       Membuat
+       <em>
+        file spider
+       </em>
+       baru
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#edit-file-spider">
+       Edit file spider
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simpan-data-hasil-crawling">
+       Simpan data hasil crawling
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#persiapan-data">
+   2. Persiapan Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-modul">
+     Import modul
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#read-data">
+     Read data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#text-pre-processing">
+   3.
+   <em>
+    Text Pre-processing
+   </em>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-pre-processing">
+     Pengertian
+     <em>
+      Pre-processing
+     </em>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-pre-processing">
+     <em>
+      Step Pre-processing
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#case-folding">
+       Case Folding
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cleaning-data">
+       Cleaning Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stopword-removal">
+       Stopword Removal
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#term-weighting">
+   4. Term Weighting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#latent-semantic-analysis-lsa">
+   5.
+   <em>
+    Latent Semantic Analysis
+   </em>
+   (LSA)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-lsa">
+     Pengertian LSA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-lsa">
+     <em>
+      Step
+     </em>
+     LSA
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#singular-value-decomposition">
+       Singular Value Decomposition
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menampilkan-hasil-topik-tiap-dokumen">
+       Menampilkan hasil topik tiap dokumen.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menghasilkan-nilai-komponen-tiap-topik">
+       Menghasilkan nilai komponen tiap topik.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menghasilkan-kata-penting-tiap-topik">
+       Menghasilkan kata penting tiap topik.
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referensi">
+   Referensi
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Topic Modelling</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pengertian-topic-modelling">
+   Pengertian
+   <em>
+    Topic Modelling
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-topic-modelling">
+   Step
+   <em>
+    Topic Modelling
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#crawling-data">
+   1.
+   <em>
+    Crawling Data
+   </em>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-crawling-data">
+     Pengertian
+     <em>
+      Crawling Data
+     </em>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-crawling-data">
+     <em>
+      Step Crawling Data
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mencari-url-yang-dituju">
+       Mencari URL yang dituju.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-scrapy">
+       Install scrapy
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#membuat-project-baru">
+       Membuat project baru
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#membuat-file-spider-baru">
+       Membuat
+       <em>
+        file spider
+       </em>
+       baru
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#edit-file-spider">
+       Edit file spider
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simpan-data-hasil-crawling">
+       Simpan data hasil crawling
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#persiapan-data">
+   2. Persiapan Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-modul">
+     Import modul
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#read-data">
+     Read data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#text-pre-processing">
+   3.
+   <em>
+    Text Pre-processing
+   </em>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-pre-processing">
+     Pengertian
+     <em>
+      Pre-processing
+     </em>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-pre-processing">
+     <em>
+      Step Pre-processing
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#case-folding">
+       Case Folding
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cleaning-data">
+       Cleaning Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stopword-removal">
+       Stopword Removal
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#term-weighting">
+   4. Term Weighting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#latent-semantic-analysis-lsa">
+   5.
+   <em>
+    Latent Semantic Analysis
+   </em>
+   (LSA)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-lsa">
+     Pengertian LSA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-lsa">
+     <em>
+      Step
+     </em>
+     LSA
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#singular-value-decomposition">
+       Singular Value Decomposition
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menampilkan-hasil-topik-tiap-dokumen">
+       Menampilkan hasil topik tiap dokumen.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menghasilkan-nilai-komponen-tiap-topik">
+       Menghasilkan nilai komponen tiap topik.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menghasilkan-kata-penting-tiap-topik">
+       Menghasilkan kata penting tiap topik.
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referensi">
+   Referensi
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="topic-modelling">
+<h1>Topic Modelling<a class="headerlink" href="#topic-modelling" title="Permalink to this headline">#</a></h1>
+<section id="pengertian-topic-modelling">
+<h2>Pengertian <em>Topic Modelling</em><a class="headerlink" href="#pengertian-topic-modelling" title="Permalink to this headline">#</a></h2>
+<p><em>Topic modelling</em> merupakan bentuk penambangan teks yang digunakan untuk mengidentifikasi pola dalam korpus. <em>Topic Modelling</em> juga merupakan pendekatan  yang cukup handal untuk penambangan teks untuk menemukan data teks tersembunyi dan menemukan hubungan antara satu teks  dengan teks lainnya dari korpus (Jelodar, et al., 2018) atau dapat disimpulkan bahwa <em>Topic Modelling</em> merupakan mengelompokkan data tekstual berdasarkan topik tertentu.</p>
+</section>
+<section id="step-topic-modelling">
+<h2>Step <em>Topic Modelling</em><a class="headerlink" href="#step-topic-modelling" title="Permalink to this headline">#</a></h2>
+<p>Tahapan atau langkah-langkah dari <em>Topic Modelling</em> adalah sebagai berikut:</p>
+</section>
+<section id="crawling-data">
+<h2>1. <em>Crawling Data</em><a class="headerlink" href="#crawling-data" title="Permalink to this headline">#</a></h2>
+<section id="pengertian-crawling-data">
+<h3>Pengertian <em>Crawling Data</em><a class="headerlink" href="#pengertian-crawling-data" title="Permalink to this headline">#</a></h3>
+<p>Crawling Data merupakan proses melakukan pencarian dan pemindaian sebuah konten/data pada website. Data crawling adalah aktivitas crawler untuk mengindeks sebuah data dan mengunduh dari internet yang kemudian akan disimpan ke dalam database [1].</p>
+<p>Proses <em>crawling</em> dapat dilakukan dengan berbagai cara namun pada kali ini proses <em>crawling</em> dilakukan menggunakan <em>Scrapy Python</em>. Adapun untuk tahapan-tahapan dari proses crawling adalah sebagai berikut:</p>
+</section>
+<section id="step-crawling-data">
+<h3><em>Step Crawling Data</em><a class="headerlink" href="#step-crawling-data" title="Permalink to this headline">#</a></h3>
+<section id="mencari-url-yang-dituju">
+<h4>Mencari URL yang dituju.<a class="headerlink" href="#mencari-url-yang-dituju" title="Permalink to this headline">#</a></h4>
+<p>Tentukan URL yang akan diambil datanya, sebagai contoh pada proses kali ini menggambil data tugas akhir Universitas Trunojoyo Madura yakni <a class="reference external" href="https://pta.trunojoyo.ac.id">https://pta.trunojoyo.ac.id</a>.</p>
+</section>
+<section id="install-scrapy">
+<h4>Install scrapy<a class="headerlink" href="#install-scrapy" title="Permalink to this headline">#</a></h4>
+<p>Setelah memastikan URL yang dituju, maka tahap selanjutnya adalah menginstal scrapy menggunakan perintah :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">scrapy</span>
+</pre></div>
+</div>
+</section>
+<section id="membuat-project-baru">
+<h4>Membuat project baru<a class="headerlink" href="#membuat-project-baru" title="Permalink to this headline">#</a></h4>
+<p>Setelah berhasil menginstal scrapy maka tahap selanjutnya adalah membuat <em>project scrapy</em> baru menggunakan perintah:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">startproject</span> <span class="n">projectname</span>
+</pre></div>
+</div>
+<p>Dengan,</p>
+<ul class="simple">
+<li><p>projectname : nama project baru</p></li>
+</ul>
+</section>
+<section id="membuat-file-spider-baru">
+<h4>Membuat <em>file spider</em> baru<a class="headerlink" href="#membuat-file-spider-baru" title="Permalink to this headline">#</a></h4>
+<p>Apabila telah berhasil membuat <em>project scrapy</em> baru maka masuk ke direktori folder tersebut dan kemudian membuat <em>file spider</em> baru mengunakan perintah:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">genspider</span> <span class="n">newspider</span> <span class="n">urltujuan</span>
+</pre></div>
+</div>
+<p>Dengan,</p>
+<ul class="simple">
+<li><p>newspider : nama file spider baru.</p></li>
+<li><p>urltujuan : link URL yang akan dituju.</p></li>
+</ul>
+</section>
+<section id="edit-file-spider">
+<h4>Edit file spider<a class="headerlink" href="#edit-file-spider" title="Permalink to this headline">#</a></h4>
+<p>Buka file <a class="reference external" href="http://spider.py">spider.py</a> pada <em>text editor</em>, buka terminal dan buka <em>scrapy console</em> menggunakan perintah:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>scrapy shell ‘pta.tunojoyo.ac.id’
+</pre></div>
+</div>
+<p>Setelah <em>console</em> berhasil terbuka, lakukan <em>inspect element</em> pada <em>website</em> tersebut untuk mendapatkan <em>element</em> yang berisi data-data yang ingin dicari seperti judul, penulis, pembimbing I, pembimbing II dan abstrak dan jalankan pada <em>console</em> apabila telah berhasil maka <em>copy paste code</em> tadi untuk di-<em>input</em> ke dalam <em>file spider</em> tadi, sehingga hasilnya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+<span class="k">class</span> <span class="nc">WebminingSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;webmining&#39;</span>
+    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pta.trunojoyo.ac.id&#39;</span><span class="p">]</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://pta.trunojoyo.ac.id/c_search/byprod/10/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">)]</span>
+    
+	<span class="c1">#element button yang mengarah ke link data yang dicari </span>
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;a.gray.button::attr(href)&#39;</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">response</span><span class="o">.</span><span class="n">follow</span><span class="p">(</span><span class="n">link</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_categories</span><span class="p">)</span>
+	
+    <span class="c1">#element tiap data yang dicari</span>
+    <span class="k">def</span> <span class="nf">parse_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">product</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div#content_journal ul li&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">product</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="p">{</span>
+                <span class="c1">#mendapatkan data &quot;judul&quot;</span>
+                <span class="c1">#strip() digunakan untuk merapikan data</span>
+                <span class="s1">&#39;Judul&#39;</span> <span class="p">:</span> <span class="n">product</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div a.title::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="c1">#mendapatkan data &quot;penulis&quot;</span>
+                <span class="s1">&#39;Penulis&#39;</span> <span class="p">:</span> <span class="n">product</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div div:nth-child(2) span::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="c1">#mendapatkan data &quot;pembimbing I&quot;</span>
+                <span class="s1">&#39;Pembimbing I&#39;</span> <span class="p">:</span> <span class="n">product</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div div:nth-child(3) span::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="c1">#mendapatkan data &quot;pembimbing II&quot;</span>
+                <span class="s1">&#39;Pembimbing II&#39;</span> <span class="p">:</span> <span class="n">product</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div div:nth-child(4) span::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="c1">#mendapatkan data &quot;abstrak&quot;</span>
+                <span class="s1">&#39;Abstrak&#39;</span> <span class="p">:</span> <span class="n">product</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div div:nth-child(2) p::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+<p>Pada <em>“start_urls”</em> link dapat diubah-ubah sesuai kebutuhan dan pada kali ini dilakukan perulangan atau iterasi sebanyak 15 yang berfokus pada tugas akhir mahasiswa Teknik Informatika.</p>
+</section>
+<section id="simpan-data-hasil-crawling">
+<h4>Simpan data hasil crawling<a class="headerlink" href="#simpan-data-hasil-crawling" title="Permalink to this headline">#</a></h4>
+<p>Setelah berhasil mengekstrak data maka tahap selanjutnya adalah menyimpan data sesuai format yang diinginkan menggunakan perintah:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">crawl</span> <span class="n">newspider</span> <span class="o">-</span><span class="n">o</span> <span class="n">hasil</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+<p>Dengan,</p>
+<ul class="simple">
+<li><p>newspider : file spider yang telah dibuat.</p></li>
+<li><p>hasil.csv : file csv untuk menyimpan hasil <em>crawling</em>.</p></li>
+</ul>
+<p>Buka kembali console dan ketikkan perintah diatas dan tunggu hingga proses selesai dan data siap digunakan.</p>
+</section>
+</section>
+</section>
+<section id="persiapan-data">
+<h2>2. Persiapan Data<a class="headerlink" href="#persiapan-data" title="Permalink to this headline">#</a></h2>
+<section id="import-modul">
+<h3>Import modul<a class="headerlink" href="#import-modul" title="Permalink to this headline">#</a></h3>
+<p><em>Import</em> modul-modul yang digunakan seperti <em>pandas, numpy, nltk, sklearn</em> dan lain sebagainya.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">string</span> 
+<span class="kn">import</span> <span class="nn">re</span> <span class="c1">#regex library</span>
+ 
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span>
+</pre></div>
+</div>
+</section>
+<section id="read-data">
+<h3>Read data<a class="headerlink" href="#read-data" title="Permalink to this headline">#</a></h3>
+<p>Setelah <em>import modul, read data</em> yang telah di-<em>crawling</em> menggunakan <em>library pandas</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Tf_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;PTAscrawls.csv&quot;</span><span class="p">)</span>
+<span class="n">Tf_data</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="text-pre-processing">
+<h2>3. <em>Text Pre-processing</em><a class="headerlink" href="#text-pre-processing" title="Permalink to this headline">#</a></h2>
+<section id="pengertian-pre-processing">
+<h3>Pengertian <em>Pre-processing</em><a class="headerlink" href="#pengertian-pre-processing" title="Permalink to this headline">#</a></h3>
+<p>Pra-pemrosesan teks merupakan proses yang dilakukan untuk mengolah data yang akan dianalisis menjadi data yang lebih mudah dipahami seperti menghapus noise, missing value, dan data yang tidak konsisten. Adapun tahapan dari <em>text pre-processing</em> adalah sebagai berikut:</p>
+</section>
+<section id="step-pre-processing">
+<h3><em>Step Pre-processing</em><a class="headerlink" href="#step-pre-processing" title="Permalink to this headline">#</a></h3>
+<section id="case-folding">
+<h4>Case Folding<a class="headerlink" href="#case-folding" title="Permalink to this headline">#</a></h4>
+<p>Case folding merupakan proses untuk mengubah kalimat dalam teks menjadi huruf kecil [2]. Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;Abstrak&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="c1">#untuk menampilkan 5 hasil case folding teratas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="cleaning-data">
+<h4>Cleaning Data<a class="headerlink" href="#cleaning-data" title="Permalink to this headline">#</a></h4>
+<p>Cleaning data merupakan proses untuk membersihkan dan menghapus text spesial seperti simbol, angka, link, whitespace dan lain-lain. Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Hapus teks spesial</span>
+<span class="k">def</span> <span class="nf">remove_text_special</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="c1"># hapus tab, new line, dan back slice</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">t&#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">n&#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">u&#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="c1"># hapus non ASCII (emoticon, chinese word, .etc)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="s1">&#39;replace&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+    <span class="c1"># hapus mention, link, hashtag</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;([@#][A-Za-z0-9]+)|(\w+:\/\/\S+)&quot;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+    <span class="c1"># hapus URL</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+<span class="c1">#hapus angka</span>
+<span class="k">def</span> <span class="nf">remove_number</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span>  <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="c1">#hapus tanda baca</span>
+<span class="k">def</span> <span class="nf">remove_punctuation</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
+
+<span class="c1">#hapus whitespace leading &amp; trailing</span>
+<span class="k">def</span> <span class="nf">remove_whitespace_LT</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="c1">#hapus multiple whitespace into single whitespace</span>
+<span class="k">def</span> <span class="nf">remove_whitespace_multiple</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c1">#hapus single char</span>
+<span class="k">def</span> <span class="nf">remove_singl_char</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\b[a-zA-Z]\b&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="c1">#menerapkan fungsi-fungsi yang telah dibuat diatas</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_text_special</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_number</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_punctuation</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_whitespace_LT</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_whitespace_multiple</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_singl_char</span><span class="p">)</span>
+
+<span class="c1">#menampilkan hasil cleaning data 5 teratas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="stopword-removal">
+<h4>Stopword Removal<a class="headerlink" href="#stopword-removal" title="Permalink to this headline">#</a></h4>
+<p>Stopword removal merupakan proses untuk menghapus kata yang tidak penting dan tidak memiliki makna seperti “yang”, “dari” dan lain-lain [2]. Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">)</span>
+
+<span class="c1">#untuk menghapus kata yang seharusnya dihapus namun tidak terhapus</span>
+<span class="n">stop_words</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;aam&quot;</span><span class="p">,</span><span class="s2">&quot;absolute&quot;</span><span class="p">,</span><span class="s2">&quot;abstract&quot;</span><span class="p">,</span><span class="s2">&quot;abstrakxd&quot;</span><span class="p">,</span><span class="s2">&quot;adm&quot;</span><span class="p">,</span><span class="s2">&quot;ahp&quot;</span><span class="p">,</span><span class="s2">&quot;ai&quot;</span><span class="p">,</span><span class="s2">&quot;aid&quot;</span><span class="p">,</span><span class="s2">&quot;akanxd&quot;</span><span class="p">,</span><span class="s2">&quot;akhirxd&quot;</span><span class="p">,</span><span class="s2">&quot;alert&quot;</span><span class="p">,</span><span class="s2">&quot;algorithm&quot;</span><span class="p">,</span><span class="s2">&quot;alpha&quot;</span><span class="p">,</span><span class="s2">&quot;alternative&quot;</span><span class="p">,</span><span class="s2">&quot;ambroxol&quot;</span><span class="p">,</span><span class="s2">&quot;analysis&quot;</span><span class="p">,</span><span class="s2">&quot;analytic&quot;</span><span class="p">,</span><span class="s2">&quot;analytical&quot;</span><span class="p">,</span><span class="s2">&quot;and&quot;</span><span class="p">,</span><span class="s2">&quot;angkaangka&quot;</span><span class="p">,</span><span class="s2">&quot;angular&quot;</span><span class="p">,</span><span class="s2">&quot;anp&quot;</span><span class="p">,</span><span class="s2">&quot;apl&quot;</span><span class="p">,</span><span class="s2">&quot;aplikasixd&quot;</span><span class="p">,</span><span class="s2">&quot;application&quot;</span><span class="p">,</span><span class="s2">&quot;architecture&quot;</span><span class="p">,</span><span class="s2">&quot;artifical&quot;</span><span class="p">,</span><span class="s2">&quot;as&quot;</span><span class="p">,</span><span class="s2">&quot;asesoris&quot;</span><span class="p">,</span><span class="s2">&quot;attribute&quot;</span><span class="p">,</span><span class="s2">&quot;automatic&quot;</span><span class="p">,</span><span class="s2">&quot;average&quot;</span><span class="p">,</span><span class="s2">&quot;babnyajika&quot;</span><span class="p">,</span><span class="s2">&quot;background&quot;</span><span class="p">,</span><span class="s2">&quot;bahanbahan&quot;</span><span class="p">,</span><span class="s2">&quot;baikxd&quot;</span><span class="p">,</span><span class="s2">&quot;balanced&quot;</span><span class="p">,</span><span class="s2">&quot;base&quot;</span><span class="p">,</span><span class="s2">&quot;based&quot;</span><span class="p">,</span><span class="s2">&quot;basic&quot;</span><span class="p">,</span><span class="s2">&quot;bc&quot;</span><span class="p">,</span><span class="s2">&quot;beasiwa&quot;</span><span class="p">,</span><span class="s2">&quot;benarbenar&quot;</span><span class="p">,</span><span class="s2">&quot;benedict&quot;</span><span class="p">,</span><span class="s2">&quot;beratxd&quot;</span><span class="p">,</span><span class="s2">&quot;berbedabeda&quot;</span><span class="p">,</span><span class="s2">&quot;berturutturut&quot;</span><span class="p">,</span><span class="s2">&quot;bifurcation&quot;</span><span class="p">,</span><span class="s2">&quot;binaryzation&quot;</span><span class="p">,</span><span class="s2">&quot;bisoprolol&quot;</span><span class="p">,</span><span class="s2">&quot;bkd&quot;</span><span class="p">,</span><span class="s2">&quot;block&quot;</span><span class="p">,</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span><span class="s2">&quot;bolditalic&quot;</span><span class="p">,</span><span class="s2">&quot;bpp&quot;</span><span class="p">,</span><span class="s2">&quot;bps&quot;</span><span class="p">,</span><span class="s2">&quot;browsing&quot;</span><span class="p">,</span><span class="s2">&quot;bsc&quot;</span><span class="p">,</span><span class="s2">&quot;business&quot;</span><span class="p">,</span><span class="s2">&quot;by&quot;</span><span class="p">,</span><span class="s2">&quot;canny&quot;</span><span class="p">,</span><span class="s2">&quot;caps&quot;</span><span class="p">,</span><span class="s2">&quot;cbir&quot;</span><span class="p">,</span><span class="s2">&quot;cefixime&quot;</span><span class="p">,</span><span class="s2">&quot;center&quot;</span><span class="p">,</span><span class="s2">&quot;centroid&quot;</span><span class="p">,</span><span class="s2">&quot;chain&quot;</span><span class="p">,</span><span class="s2">&quot;chaining&quot;</span><span class="p">,</span><span class="s2">&quot;chainning&quot;</span><span class="p">,</span><span class="s2">&quot;character&quot;</span><span class="p">,</span><span class="s2">&quot;cipherteks&quot;</span><span class="p">,</span><span class="s2">&quot;class&quot;</span><span class="p">,</span><span class="s2">&quot;classfier&quot;</span><span class="p">,</span><span class="s2">&quot;classification&quot;</span><span class="p">,</span><span class="s2">&quot;classifier&quot;</span><span class="p">,</span><span class="s2">&quot;close&quot;</span><span class="p">,</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span><span class="s2">&quot;clustering&quot;</span><span class="p">,</span><span class="s2">&quot;coding&quot;</span><span class="p">,</span><span class="s2">&quot;combat&quot;</span><span class="p">,</span><span class="s2">&quot;commerce&quot;</span><span class="p">,</span><span class="s2">&quot;component&quot;</span><span class="p">,</span><span class="s2">&quot;compute&quot;</span><span class="p">,</span><span class="s2">&quot;computer&quot;</span><span class="p">,</span><span class="s2">&quot;confix&quot;</span><span class="p">,</span><span class="s2">&quot;content&quot;</span><span class="p">,</span><span class="s2">&quot;contex&quot;</span><span class="p">,</span><span class="s2">&quot;context&quot;</span><span class="p">,</span><span class="s2">&quot;corepoint&quot;</span><span class="p">,</span><span class="s2">&quot;corpus&quot;</span><span class="p">,</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span><span class="s2">&quot;criteria&quot;</span><span class="p">,</span><span class="s2">&quot;criteriaxd&quot;</span><span class="p">,</span><span class="s2">&quot;crm&quot;</span><span class="p">,</span><span class="s2">&quot;crossing&quot;</span><span class="p">,</span><span class="s2">&quot;customer&quot;</span><span class="p">,</span><span class="s2">&quot;cut&quot;</span><span class="p">,</span><span class="s2">&quot;cycle&quot;</span><span class="p">,</span><span class="s2">&quot;dalamxd&quot;</span><span class="p">,</span><span class="s2">&quot;darixd&quot;</span><span class="p">,</span><span class="s2">&quot;database&quot;</span><span class="p">,</span><span class="s2">&quot;datadata&quot;</span><span class="p">,</span><span class="s2">&quot;dataxd&quot;</span><span class="p">,</span><span class="s2">&quot;daviesbouldin&quot;</span><span class="p">,</span><span class="s2">&quot;decision&quot;</span><span class="p">,</span><span class="s2">&quot;decomposition&quot;</span><span class="p">,</span><span class="s2">&quot;defuzzyfikasi&quot;</span><span class="p">,</span><span class="s2">&quot;dekripsi&quot;</span><span class="p">,</span><span class="s2">&quot;denga&quot;</span><span class="p">,</span><span class="s2">&quot;denganxd&quot;</span><span class="p">,</span><span class="s2">&quot;depanxd&quot;</span><span class="p">,</span><span class="s2">&quot;depth&quot;</span><span class="p">,</span><span class="s2">&quot;design&quot;</span><span class="p">,</span><span class="s2">&quot;development&quot;</span><span class="p">,</span><span class="s2">&quot;dibatasixd&quot;</span><span class="p">,</span><span class="s2">&quot;dicarixd&quot;</span><span class="p">,</span><span class="s2">&quot;difference&quot;</span><span class="p">,</span><span class="s2">&quot;diprosesxd&quot;</span><span class="p">,</span><span class="s2">&quot;direction&quot;</span><span class="p">,</span><span class="s2">&quot;disegmentasi&quot;</span><span class="p">,</span><span class="s2">&quot;disk&quot;</span><span class="p">,</span><span class="s2">&quot;disperindag&quot;</span><span class="p">,</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span><span class="s2">&quot;distemming&quot;</span><span class="p">,</span><span class="s2">&quot;dkpp&quot;</span><span class="p">,</span><span class="s2">&quot;dlda&quot;</span><span class="p">,</span><span class="s2">&quot;dominant&quot;</span><span class="p">,</span><span class="s2">&quot;download&quot;</span><span class="p">,</span><span class="s2">&quot;dperoleh&quot;</span><span class="p">,</span><span class="s2">&quot;dr&quot;</span><span class="p">,</span><span class="s2">&quot;drop&quot;</span><span class="p">,</span><span class="s2">&quot;dsebut&quot;</span><span class="p">,</span><span class="s2">&quot;eclipse&quot;</span><span class="p">,</span><span class="s2">&quot;ecommerce&quot;</span><span class="p">,</span><span class="s2">&quot;ecommercexd&quot;</span><span class="p">,</span><span class="s2">&quot;economic&quot;</span><span class="p">,</span><span class="s2">&quot;edge&quot;</span><span class="p">,</span><span class="s2">&quot;edm&quot;</span><span class="p">,</span><span class="s2">&quot;education&quot;</span><span class="p">,</span><span class="s2">&quot;egovernment&quot;</span><span class="p">,</span><span class="s2">&quot;eigenxd&quot;</span><span class="p">,</span><span class="s2">&quot;ekuitas&quot;</span><span class="p">,</span><span class="s2">&quot;electre&quot;</span><span class="p">,</span><span class="s2">&quot;electreii&quot;</span><span class="p">,</span><span class="s2">&quot;electronic&quot;</span><span class="p">,</span><span class="s2">&quot;emulator&quot;</span><span class="p">,</span><span class="s2">&quot;engghibunten&quot;</span><span class="p">,</span><span class="s2">&quot;engine&quot;</span><span class="p">,</span><span class="s2">&quot;engineering&quot;</span><span class="p">,</span><span class="s2">&quot;enginexd&quot;</span><span class="p">,</span><span class="s2">&quot;english&quot;</span><span class="p">,</span><span class="s2">&quot;enhanced&quot;</span><span class="p">,</span><span class="s2">&quot;enjeiyeh&quot;</span><span class="p">,</span><span class="s2">&quot;enterprise&quot;</span><span class="p">,</span><span class="s2">&quot;environment&quot;</span><span class="p">,</span><span class="s2">&quot;eoq&quot;</span><span class="p">,</span><span class="s2">&quot;epoch&quot;</span><span class="p">,</span><span class="s2">&quot;epoh&quot;</span><span class="p">,</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="s2">&quot;eucledian&quot;</span><span class="p">,</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span><span class="s2">&quot;exploiting&quot;</span><span class="p">,</span><span class="s2">&quot;exponential&quot;</span><span class="p">,</span><span class="s2">&quot;express&quot;</span><span class="p">,</span><span class="s2">&quot;fahp&quot;</span><span class="p">,</span><span class="s2">&quot;fanp&quot;</span><span class="p">,</span><span class="s2">&quot;feature&quot;</span><span class="p">,</span><span class="s2">&quot;fighting&quot;</span><span class="p">,</span><span class="s2">&quot;filter&quot;</span><span class="p">,</span><span class="s2">&quot;filtering&quot;</span><span class="p">,</span><span class="s2">&quot;fine&quot;</span><span class="p">,</span><span class="s2">&quot;fingerprint&quot;</span><span class="p">,</span><span class="s2">&quot;fingerprintbitmaps&quot;</span><span class="p">,</span><span class="s2">&quot;finite&quot;</span><span class="p">,</span><span class="s2">&quot;firewall&quot;</span><span class="p">,</span><span class="s2">&quot;first&quot;</span><span class="p">,</span><span class="s2">&quot;fisik&quot;</span><span class="p">,</span><span class="s2">&quot;fmeasure&quot;</span><span class="p">,</span><span class="s2">&quot;fmop&quot;</span><span class="p">,</span><span class="s2">&quot;font&quot;</span><span class="p">,</span><span class="s2">&quot;foreign&quot;</span><span class="p">,</span><span class="s2">&quot;forward&quot;</span><span class="p">,</span><span class="s2">&quot;framework&quot;</span><span class="p">,</span><span class="s2">&quot;free&quot;</span><span class="p">,</span><span class="s2">&quot;frustasi&quot;</span><span class="p">,</span><span class="s2">&quot;fsm&quot;</span><span class="p">,</span><span class="s2">&quot;function&quot;</span><span class="p">,</span><span class="s2">&quot;fuzzy&quot;</span><span class="p">,</span><span class="s2">&quot;fvc&quot;</span><span class="p">,</span><span class="s2">&quot;galis&quot;</span><span class="p">,</span><span class="s2">&quot;game&quot;</span><span class="p">,</span><span class="s2">&quot;games&quot;</span><span class="p">,</span><span class="s2">&quot;garisgaris&quot;</span><span class="p">,</span><span class="s2">&quot;gateway&quot;</span><span class="p">,</span><span class="s2">&quot;gaussian&quot;</span><span class="p">,</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span><span class="s2">&quot;gizixd&quot;</span><span class="p">,</span><span class="s2">&quot;gldm&quot;</span><span class="p">,</span><span class="s2">&quot;glrm&quot;</span><span class="p">,</span><span class="s2">&quot;gr&quot;</span><span class="p">,</span><span class="s2">&quot;gradient&quot;</span><span class="p">,</span><span class="s2">&quot;gradients&quot;</span><span class="p">,</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span><span class="s2">&quot;grayscaling&quot;</span><span class="p">,</span><span class="s2">&quot;grcitra&quot;</span><span class="p">,</span><span class="s2">&quot;ground&quot;</span><span class="p">,</span><span class="s2">&quot;growth&quot;</span><span class="p">,</span><span class="s2">&quot;ha&quot;</span><span class="p">,</span><span class="s2">&quot;haar&quot;</span><span class="p">,</span><span class="s2">&quot;had&quot;</span><span class="p">,</span><span class="s2">&quot;handwriting&quot;</span><span class="p">,</span><span class="s2">&quot;harris&quot;</span><span class="p">,</span><span class="s2">&quot;hash&quot;</span><span class="p">,</span><span class="s2">&quot;hh&quot;</span><span class="p">,</span><span class="s2">&quot;hidden&quot;</span><span class="p">,</span><span class="s2">&quot;hierarchy&quot;</span><span class="p">,</span><span class="s2">&quot;high&quot;</span><span class="p">,</span><span class="s2">&quot;hijauxd&quot;</span><span class="p">,</span><span class="s2">&quot;hl&quot;</span><span class="p">,</span><span class="s2">&quot;hog&quot;</span><span class="p">,</span><span class="s2">&quot;ht&quot;</span><span class="p">,</span><span class="s2">&quot;idb&quot;</span><span class="p">,</span><span class="s2">&quot;ii&quot;</span><span class="p">,</span><span class="s2">&quot;ij&quot;</span><span class="p">,</span><span class="s2">&quot;iksass&quot;</span><span class="p">,</span><span class="s2">&quot;image&quot;</span><span class="p">,</span><span class="s2">&quot;indahmulya&quot;</span><span class="p">,</span><span class="s2">&quot;indicator&quot;</span><span class="p">,</span><span class="s2">&quot;indicators&quot;</span><span class="p">,</span><span class="s2">&quot;infoinfo&quot;</span><span class="p">,</span><span class="s2">&quot;inginxd&quot;</span><span class="p">,</span><span class="s2">&quot;inixd&quot;</span><span class="p">,</span><span class="s2">&quot;inktech&quot;</span><span class="p">,</span><span class="s2">&quot;interface&quot;</span><span class="p">,</span><span class="s2">&quot;interprise&quot;</span><span class="p">,</span><span class="s2">&quot;intervace&quot;</span><span class="p">,</span><span class="s2">&quot;intervensi&quot;</span><span class="p">,</span><span class="s2">&quot;interview&quot;</span><span class="p">,</span><span class="s2">&quot;intraseluler&quot;</span><span class="p">,</span><span class="s2">&quot;intrusion&quot;</span><span class="p">,</span><span class="s2">&quot;invariant&quot;</span><span class="p">,</span><span class="s2">&quot;inventori&quot;</span><span class="p">,</span><span class="s2">&quot;ips&quot;</span><span class="p">,</span><span class="s2">&quot;iptables&quot;</span><span class="p">,</span><span class="s2">&quot;italic&quot;</span><span class="p">,</span><span class="s2">&quot;jaringanjaringan&quot;</span><span class="p">,</span><span class="s2">&quot;jarixd&quot;</span><span class="p">,</span><span class="s2">&quot;java&quot;</span><span class="p">,</span><span class="s2">&quot;jejaring&quot;</span><span class="p">,</span><span class="s2">&quot;jiwaxd&quot;</span><span class="p">,</span><span class="s2">&quot;jst&quot;</span><span class="p">,</span><span class="s2">&quot;kabupatenkabupaten&quot;</span><span class="p">,</span><span class="s2">&quot;kaganga&quot;</span><span class="p">,</span><span class="s2">&quot;kallista&quot;</span><span class="p">,</span><span class="s2">&quot;karakterkarakter&quot;</span><span class="p">,</span><span class="s2">&quot;karapanxd&quot;</span><span class="p">,</span><span class="s2">&quot;kec&quot;</span><span class="p">,</span><span class="s2">&quot;kerapan&quot;</span><span class="p">,</span><span class="s2">&quot;kerjasamaxd&quot;</span><span class="p">,</span><span class="s2">&quot;kesejahteraanya&quot;</span><span class="p">,</span><span class="s2">&quot;key&quot;</span><span class="p">,</span><span class="s2">&quot;keypoint&quot;</span><span class="p">,</span><span class="s2">&quot;keyword&quot;</span><span class="p">,</span><span class="s2">&quot;keywords&quot;</span><span class="p">,</span><span class="s2">&quot;kg&quot;</span><span class="p">,</span><span class="s2">&quot;kit&quot;</span><span class="p">,</span><span class="s2">&quot;kkm&quot;</span><span class="p">,</span><span class="s2">&quot;kluster&quot;</span><span class="p">,</span><span class="s2">&quot;kmeans&quot;</span><span class="p">,</span><span class="s2">&quot;kohonen&quot;</span><span class="p">,</span><span class="s2">&quot;kokop&quot;</span><span class="p">,</span><span class="s2">&quot;komulatif&quot;</span><span class="p">,</span><span class="s2">&quot;konang&quot;</span><span class="p">,</span><span class="s2">&quot;konekasi&quot;</span><span class="p">,</span><span class="s2">&quot;kpi&quot;</span><span class="p">,</span><span class="s2">&quot;kriteriakriteria&quot;</span><span class="p">,</span><span class="s2">&quot;kriteriaxd&quot;</span><span class="p">,</span><span class="s2">&quot;ksom&quot;</span><span class="p">,</span><span class="s2">&quot;kub&quot;</span><span class="p">,</span><span class="s2">&quot;kuisioner&quot;</span><span class="p">,</span><span class="s2">&quot;kuisoner&quot;</span><span class="p">,</span><span class="s2">&quot;lainlain&quot;</span><span class="p">,</span><span class="s2">&quot;lainxd&quot;</span><span class="p">,</span><span class="s2">&quot;langkahlangkah&quot;</span><span class="p">,</span><span class="s2">&quot;language&quot;</span><span class="p">,</span><span class="s2">&quot;languange&quot;</span><span class="p">,</span><span class="s2">&quot;latent&quot;</span><span class="p">,</span><span class="s2">&quot;layer&quot;</span><span class="p">,</span><span class="s2">&quot;lda&quot;</span><span class="p">,</span><span class="s2">&quot;learning&quot;</span><span class="p">,</span><span class="s2">&quot;least&quot;</span><span class="p">,</span><span class="s2">&quot;length&quot;</span><span class="p">,</span><span class="s2">&quot;lerning&quot;</span><span class="p">,</span><span class="s2">&quot;leveling&quot;</span><span class="p">,</span><span class="s2">&quot;lh&quot;</span><span class="p">,</span><span class="s2">&quot;life&quot;</span><span class="p">,</span><span class="s2">&quot;light&quot;</span><span class="p">,</span><span class="s2">&quot;linier&quot;</span><span class="p">,</span><span class="s2">&quot;link&quot;</span><span class="p">,</span><span class="s2">&quot;listening&quot;</span><span class="p">,</span><span class="s2">&quot;ll&quot;</span><span class="p">,</span><span class="s2">&quot;load&quot;</span><span class="p">,</span><span class="s2">&quot;log&quot;</span><span class="p">,</span><span class="s2">&quot;logic&quot;</span><span class="p">,</span><span class="s2">&quot;low&quot;</span><span class="p">,</span><span class="s2">&quot;lsa&quot;</span><span class="p">,</span><span class="s2">&quot;lsasom&quot;</span><span class="p">,</span><span class="s2">&quot;lt&quot;</span><span class="p">,</span><span class="s2">&quot;lunakxd&quot;</span><span class="p">,</span><span class="s2">&quot;lunturnya&quot;</span><span class="p">,</span><span class="s2">&quot;lvq&quot;</span><span class="p">,</span><span class="s2">&quot;lyapunov&quot;</span><span class="p">,</span><span class="s2">&quot;machine&quot;</span><span class="p">,</span><span class="s2">&quot;madistrindo&quot;</span><span class="p">,</span><span class="s2">&quot;maduraindonesia&quot;</span><span class="p">,</span><span class="s2">&quot;maduraxd&quot;</span><span class="p">,</span><span class="s2">&quot;mail&quot;</span><span class="p">,</span><span class="s2">&quot;making&quot;</span><span class="p">,</span><span class="s2">&quot;malan&quot;</span><span class="p">,</span><span class="s2">&quot;mamdani&quot;</span><span class="p">,</span><span class="s2">&quot;management&quot;</span><span class="p">,</span><span class="s2">&quot;manager&quot;</span><span class="p">,</span><span class="s2">&quot;mandiriauto&quot;</span><span class="p">,</span><span class="s2">&quot;map&quot;</span><span class="p">,</span><span class="s2">&quot;mape&quot;</span><span class="p">,</span><span class="s2">&quot;maps&quot;</span><span class="p">,</span><span class="s2">&quot;mapserver&quot;</span><span class="p">,</span><span class="s2">&quot;martodirdjo&quot;</span><span class="p">,</span><span class="s2">&quot;masingmasing&quot;</span><span class="p">,</span><span class="s2">&quot;masking&quot;</span><span class="p">,</span><span class="s2">&quot;matching&quot;</span><span class="p">,</span><span class="s2">&quot;matrix&quot;</span><span class="p">,</span><span class="s2">&quot;maze&quot;</span><span class="p">,</span><span class="s2">&quot;mazexd&quot;</span><span class="p">,</span><span class="s2">&quot;mcdm&quot;</span><span class="p">,</span><span class="s2">&quot;mdf&quot;</span><span class="p">,</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span><span class="s2">&quot;melakukanxd&quot;</span><span class="p">,</span><span class="s2">&quot;membatu&quot;</span><span class="p">,</span><span class="s2">&quot;memilikixd&quot;</span><span class="p">,</span><span class="s2">&quot;mengenkripsi&quot;</span><span class="p">,</span><span class="s2">&quot;menggunakanxd&quot;</span><span class="p">,</span><span class="s2">&quot;message&quot;</span><span class="p">,</span><span class="s2">&quot;metadata&quot;</span><span class="p">,</span><span class="s2">&quot;method&quot;</span><span class="p">,</span><span class="s2">&quot;mg&quot;</span><span class="p">,</span><span class="s2">&quot;middleware&quot;</span><span class="p">,</span><span class="s2">&quot;minimnya&quot;</span><span class="p">,</span><span class="s2">&quot;minutea&quot;</span><span class="p">,</span><span class="s2">&quot;minutiae&quot;</span><span class="p">,</span><span class="s2">&quot;modung&quot;</span><span class="p">,</span><span class="s2">&quot;momentum&quot;</span><span class="p">,</span><span class="s2">&quot;monitoring&quot;</span><span class="p">,</span><span class="s2">&quot;morfologi&quot;</span><span class="p">,</span><span class="s2">&quot;mosaic&quot;</span><span class="p">,</span><span class="s2">&quot;mosaikpanoramik&quot;</span><span class="p">,</span><span class="s2">&quot;moving&quot;</span><span class="p">,</span><span class="s2">&quot;mpc&quot;</span><span class="p">,</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span><span class="s2">&quot;multiatribute&quot;</span><span class="p">,</span><span class="s2">&quot;multimedia&quot;</span><span class="p">,</span><span class="s2">&quot;multiobjective&quot;</span><span class="p">,</span><span class="s2">&quot;multiple&quot;</span><span class="p">,</span><span class="s2">&quot;naive&quot;</span><span class="p">,</span><span class="s2">&quot;nave&quot;</span><span class="p">,</span><span class="s2">&quot;nbc&quot;</span><span class="p">,</span><span class="s2">&quot;negaranegara&quot;</span><span class="p">,</span><span class="s2">&quot;network&quot;</span><span class="p">,</span><span class="s2">&quot;neural&quot;</span><span class="p">,</span><span class="s2">&quot;ngram&quot;</span><span class="p">,</span><span class="s2">&quot;node&quot;</span><span class="p">,</span><span class="s2">&quot;nomor&quot;</span><span class="p">,</span><span class="s2">&quot;non&quot;</span><span class="p">,</span><span class="s2">&quot;npc&quot;</span><span class="p">,</span><span class="s2">&quot;number&quot;</span><span class="p">,</span><span class="s2">&quot;numberxd&quot;</span><span class="p">,</span><span class="s2">&quot;nya&quot;</span><span class="p">,</span><span class="s2">&quot;obatobatan&quot;</span><span class="p">,</span><span class="s2">&quot;objective&quot;</span><span class="p">,</span><span class="s2">&quot;obyek&quot;</span><span class="p">,</span><span class="s2">&quot;obyektif&quot;</span><span class="p">,</span><span class="s2">&quot;of&quot;</span><span class="p">,</span><span class="s2">&quot;offline&quot;</span><span class="p">,</span><span class="s2">&quot;ofr&quot;</span><span class="p">,</span><span class="s2">&quot;oldinary&quot;</span><span class="p">,</span><span class="s2">&quot;ols&quot;</span><span class="p">,</span><span class="s2">&quot;omax&quot;</span><span class="p">,</span><span class="s2">&quot;ontologi&quot;</span><span class="p">,</span><span class="s2">&quot;ontology&quot;</span><span class="p">,</span><span class="s2">&quot;open&quot;</span><span class="p">,</span><span class="s2">&quot;optical&quot;</span><span class="p">,</span><span class="s2">&quot;optimized&quot;</span><span class="p">,</span><span class="s2">&quot;optimiztion&quot;</span><span class="p">,</span><span class="s2">&quot;optimum&quot;</span><span class="p">,</span><span class="s2">&quot;ordered&quot;</span><span class="p">,</span><span class="s2">&quot;organizing&quot;</span><span class="p">,</span><span class="s2">&quot;oriented&quot;</span><span class="p">,</span><span class="s2">&quot;orl&quot;</span><span class="p">,</span><span class="s2">&quot;output&quot;</span><span class="p">,</span><span class="s2">&quot;owl&quot;</span><span class="p">,</span><span class="s2">&quot;panoramic&quot;</span><span class="p">,</span><span class="s2">&quot;panoramik&quot;</span><span class="p">,</span><span class="s2">&quot;panoteng&quot;</span><span class="p">,</span><span class="s2">&quot;parameterparameter&quot;</span><span class="p">,</span><span class="s2">&quot;parsing&quot;</span><span class="p">,</span><span class="s2">&quot;part&quot;</span><span class="p">,</span><span class="s2">&quot;particle&quot;</span><span class="p">,</span><span class="s2">&quot;pasienxd&quot;</span><span class="p">,</span><span class="s2">&quot;pattern&quot;</span><span class="p">,</span><span class="s2">&quot;pca&quot;</span><span class="p">,</span><span class="s2">&quot;pe&quot;</span><span class="p">,</span><span class="s2">&quot;pejualan&quot;</span><span class="p">,</span><span class="s2">&quot;pelajarsantri&quot;</span><span class="p">,</span><span class="s2">&quot;pelevelan&quot;</span><span class="p">,</span><span class="s2">&quot;pemvalidasian&quot;</span><span class="p">,</span><span class="s2">&quot;penjadwaln&quot;</span><span class="p">,</span><span class="s2">&quot;perankingan&quot;</span><span class="p">,</span><span class="s2">&quot;perankingannya&quot;</span><span class="p">,</span><span class="s2">&quot;percentage&quot;</span><span class="p">,</span><span class="s2">&quot;perconbaan&quot;</span><span class="p">,</span><span class="s2">&quot;performance&quot;</span><span class="p">,</span><span class="s2">&quot;periodeperiode&quot;</span><span class="p">,</span><span class="s2">&quot;permasalaha&quot;</span><span class="p">,</span><span class="s2">&quot;perusahaanxd&quot;</span><span class="p">,</span><span class="s2">&quot;pihakpihak&quot;</span><span class="p">,</span><span class="s2">&quot;pihakxd&quot;</span><span class="p">,</span><span class="s2">&quot;pixel&quot;</span><span class="p">,</span><span class="s2">&quot;pixels&quot;</span><span class="p">,</span><span class="s2">&quot;plainteks&quot;</span><span class="p">,</span><span class="s2">&quot;plasmodium&quot;</span><span class="p">,</span><span class="s2">&quot;plastec&quot;</span><span class="p">,</span><span class="s2">&quot;platform&quot;</span><span class="p">,</span><span class="s2">&quot;playable&quot;</span><span class="p">,</span><span class="s2">&quot;player&quot;</span><span class="p">,</span><span class="s2">&quot;pmg&quot;</span><span class="p">,</span><span class="s2">&quot;podhek&quot;</span><span class="p">,</span><span class="s2">&quot;point&quot;</span><span class="p">,</span><span class="s2">&quot;pose&quot;</span><span class="p">,</span><span class="s2">&quot;ppa&quot;</span><span class="p">,</span><span class="s2">&quot;prakandidat&quot;</span><span class="p">,</span><span class="s2">&quot;precision&quot;</span><span class="p">,</span><span class="s2">&quot;preference&quot;</span><span class="p">,</span><span class="s2">&quot;presentase&quot;</span><span class="p">,</span><span class="s2">&quot;preshion&quot;</span><span class="p">,</span><span class="s2">&quot;prevention&quot;</span><span class="p">,</span><span class="s2">&quot;prim&quot;</span><span class="p">,</span><span class="s2">&quot;principal&quot;</span><span class="p">,</span><span class="s2">&quot;prinsipnya&quot;</span><span class="p">,</span><span class="s2">&quot;print&quot;</span><span class="p">,</span><span class="s2">&quot;prism&quot;</span><span class="p">,</span><span class="s2">&quot;probabilitasmetode&quot;</span><span class="p">,</span><span class="s2">&quot;process&quot;</span><span class="p">,</span><span class="s2">&quot;processing&quot;</span><span class="p">,</span><span class="s2">&quot;produksipada&quot;</span><span class="p">,</span><span class="s2">&quot;produktivitas&quot;</span><span class="p">,</span><span class="s2">&quot;profitabilitas&quot;</span><span class="p">,</span><span class="s2">&quot;programing&quot;</span><span class="p">,</span><span class="s2">&quot;programming&quot;</span><span class="p">,</span><span class="s2">&quot;programprogram&quot;</span><span class="p">,</span><span class="s2">&quot;project&quot;</span><span class="p">,</span><span class="s2">&quot;prosentase&quot;</span><span class="p">,</span><span class="s2">&quot;prosesnya&quot;</span><span class="p">,</span><span class="s2">&quot;pso&quot;</span><span class="p">,</span><span class="s2">&quot;pt&quot;</span><span class="p">,</span><span class="s2">&quot;ptxd&quot;</span><span class="p">,</span><span class="s2">&quot;quantity&quot;</span><span class="p">,</span><span class="s2">&quot;quantization&quot;</span><span class="p">,</span><span class="s2">&quot;query&quot;</span><span class="p">,</span><span class="s2">&quot;rangkebbhan&quot;</span><span class="p">,</span><span class="s2">&quot;rank&quot;</span><span class="p">,</span><span class="s2">&quot;ranks&quot;</span><span class="p">,</span><span class="s2">&quot;raskin&quot;</span><span class="p">,</span><span class="s2">&quot;ratarata&quot;</span><span class="p">,</span><span class="s2">&quot;rate&quot;</span><span class="p">,</span><span class="s2">&quot;rater&quot;</span><span class="p">,</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span><span class="s2">&quot;ratus&quot;</span><span class="p">,</span><span class="s2">&quot;rbfn&quot;</span><span class="p">,</span><span class="s2">&quot;rbfnn&quot;</span><span class="p">,</span><span class="s2">&quot;rbfnnxd&quot;</span><span class="p">,</span><span class="s2">&quot;rc&quot;</span><span class="p">,</span><span class="s2">&quot;rdf&quot;</span><span class="p">,</span><span class="s2">&quot;reading&quot;</span><span class="p">,</span><span class="s2">&quot;real&quot;</span><span class="p">,</span><span class="s2">&quot;realistisxd&quot;</span><span class="p">,</span><span class="s2">&quot;realitas&quot;</span><span class="p">,</span><span class="s2">&quot;reality&quot;</span><span class="p">,</span><span class="s2">&quot;realtime&quot;</span><span class="p">,</span><span class="s2">&quot;recall&quot;</span><span class="p">,</span><span class="s2">&quot;recognition&quot;</span><span class="p">,</span><span class="s2">&quot;rekomndasi&quot;</span><span class="p">,</span><span class="s2">&quot;relative&quot;</span><span class="p">,</span><span class="s2">&quot;release&quot;</span><span class="p">,</span><span class="s2">&quot;resource&quot;</span><span class="p">,</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span><span class="s2">&quot;responden&quot;</span><span class="p">,</span><span class="s2">&quot;retrieval&quot;</span><span class="p">,</span><span class="s2">&quot;reuse&quot;</span><span class="p">,</span><span class="s2">&quot;ridge&quot;</span><span class="p">,</span><span class="s2">&quot;riilxd&quot;</span><span class="p">,</span><span class="s2">&quot;rill&quot;</span><span class="p">,</span><span class="s2">&quot;riwayatxd&quot;</span><span class="p">,</span><span class="s2">&quot;rehabilitasi&quot;</span><span class="p">,</span><span class="s2">&quot;roughness&quot;</span><span class="p">,</span><span class="s2">&quot;rts&quot;</span><span class="p">,</span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="s2">&quot;saaty&quot;</span><span class="p">,</span><span class="s2">&quot;salafiyah&quot;</span><span class="p">,</span><span class="s2">&quot;roughness&quot;</span><span class="p">,</span><span class="s2">&quot;sales&quot;</span><span class="p">,</span><span class="s2">&quot;sasaranxd&quot;</span><span class="p">,</span><span class="s2">&quot;satunya&quot;</span><span class="p">,</span><span class="s2">&quot;satunya&quot;</span><span class="p">,</span><span class="s2">&quot;scale&quot;</span><span class="p">,</span><span class="s2">&quot;scm&quot;</span><span class="p">,</span><span class="s2">&quot;scorecard&quot;</span><span class="p">,</span><span class="s2">&quot;scoring&quot;</span><span class="p">,</span><span class="s2">&quot;screen&quot;</span><span class="p">,</span><span class="s2">&quot;sdk&quot;</span><span class="p">,</span><span class="s2">&quot;sdkxd&quot;</span><span class="p">,</span><span class="s2">&quot;sdlc&quot;</span><span class="p">,</span><span class="s2">&quot;sdm&quot;</span><span class="p">,</span><span class="s2">&quot;search&quot;</span><span class="p">,</span><span class="s2">&quot;second&quot;</span><span class="p">,</span><span class="s2">&quot;security&quot;</span><span class="p">,</span><span class="s2">&quot;segmentasinya&quot;</span><span class="p">,</span><span class="s2">&quot;seharihari&quot;</span><span class="p">,</span><span class="s2">&quot;sekuensial&quot;</span><span class="p">,</span><span class="s2">&quot;self&quot;</span><span class="p">,</span><span class="s2">&quot;semantic&quot;</span><span class="p">,</span><span class="s2">&quot;sencitivity&quot;</span><span class="p">,</span><span class="s2">&quot;seolaholah&quot;</span><span class="p">,</span><span class="s2">&quot;separation&quot;</span><span class="p">,</span><span class="s2">&quot;seringkali&quot;</span><span class="p">,</span><span class="s2">&quot;server&quot;</span><span class="p">,</span><span class="s2">&quot;service&quot;</span><span class="p">,</span><span class="s2">&quot;ses&quot;</span><span class="p">,</span><span class="s2">&quot;seseorangxd&quot;</span><span class="p">,</span><span class="s2">&quot;shop&quot;</span><span class="p">,</span><span class="s2">&quot;shortest&quot;</span><span class="p">,</span><span class="s2">&quot;sift&quot;</span><span class="p">,</span><span class="s2">&quot;sikannya&quot;</span><span class="p">,</span><span class="s2">&quot;similar&quot;</span><span class="p">,</span><span class="s2">&quot;similaritas&quot;</span><span class="p">,</span><span class="s2">&quot;similarity&quot;</span><span class="p">,</span><span class="s2">&quot;simple&quot;</span><span class="p">,</span><span class="s2">&quot;simtak&quot;</span><span class="p">,</span><span class="s2">&quot;single&quot;</span><span class="p">,</span><span class="s2">&quot;singular&quot;</span><span class="p">,</span><span class="s2">&quot;sistemxd&quot;</span><span class="p">,</span><span class="s2">&quot;skenarioskenario&quot;</span><span class="p">,</span><span class="s2">&quot;sky&quot;</span><span class="p">,</span><span class="s2">&quot;sma&quot;</span><span class="p">,</span><span class="s2">&quot;smarter&quot;</span><span class="p">,</span><span class="s2">&quot;smartphone&quot;</span><span class="p">,</span><span class="s2">&quot;smoothing&quot;</span><span class="p">,</span><span class="s2">&quot;smooting&quot;</span><span class="p">,</span><span class="s2">&quot;smp&quot;</span><span class="p">,</span><span class="s2">&quot;sms&quot;</span><span class="p">,</span><span class="s2">&quot;snort&quot;</span><span class="p">,</span><span class="s2">&quot;software&quot;</span><span class="p">,</span><span class="s2">&quot;solusinya&quot;</span><span class="p">,</span><span class="s2">&quot;solusinyaxd&quot;</span><span class="p">,</span><span class="s2">&quot;solution&quot;</span><span class="p">,</span><span class="s2">&quot;som&quot;</span><span class="p">,</span><span class="s2">&quot;sort&quot;</span><span class="p">,</span><span class="s2">&quot;source&quot;</span><span class="p">,</span><span class="s2">&quot;spare&quot;</span><span class="p">,</span><span class="s2">&quot;spasial&quot;</span><span class="p">,</span><span class="s2">&quot;spci&quot;</span><span class="p">,</span><span class="s2">&quot;speaking&quot;</span><span class="p">,</span><span class="s2">&quot;specificity&quot;</span><span class="p">,</span><span class="s2">&quot;speech&quot;</span><span class="p">,</span><span class="s2">&quot;spk&quot;</span><span class="p">,</span><span class="s2">&quot;square&quot;</span><span class="p">,</span><span class="s2">&quot;stakeholder&quot;</span><span class="p">,</span><span class="s2">&quot;state&quot;</span><span class="p">,</span><span class="s2">&quot;statistik&quot;</span><span class="p">,</span><span class="s2">&quot;statusxd&quot;</span><span class="p">,</span><span class="s2">&quot;stemmer&quot;</span><span class="p">,</span><span class="s2">&quot;stemming&quot;</span><span class="p">,</span><span class="s2">&quot;stockpile&quot;</span><span class="p">,</span><span class="s2">&quot;strategi&quot;</span><span class="p">,</span><span class="s2">&quot;strategy&quot;</span><span class="p">,</span><span class="s2">&quot;straw&quot;</span><span class="p">,</span><span class="s2">&quot;stripping&quot;</span><span class="p">,</span><span class="s2">&quot;style&quot;</span><span class="p">,</span><span class="s2">&quot;sub&quot;</span><span class="p">,</span><span class="s2">&quot;subkriteria&quot;</span><span class="p">,</span><span class="s2">&quot;subset&quot;</span><span class="p">,</span><span class="s2">&quot;subsistem&quot;</span><span class="p">,</span><span class="s2">&quot;subtropics&quot;</span><span class="p">,</span><span class="s2">&quot;subyektivitas&quot;</span><span class="p">,</span><span class="s2">&quot;sumenep&quot;</span><span class="p">,</span><span class="s2">&quot;suplier&quot;</span><span class="p">,</span><span class="s2">&quot;supplier&quot;</span><span class="p">,</span><span class="s2">&quot;supply&quot;</span><span class="p">,</span><span class="s2">&quot;swarm&quot;</span><span class="p">,</span><span class="s2">&quot;syafiiyah&quot;</span><span class="p">,</span><span class="s2">&quot;system&quot;</span><span class="p">,</span><span class="s2">&quot;tab&quot;</span><span class="p">,</span><span class="s2">&quot;tamansepanjang&quot;</span><span class="p">,</span><span class="s2">&quot;technique&quot;</span><span class="p">,</span><span class="s2">&quot;telekomunikasi&quot;</span><span class="p">,</span><span class="s2">&quot;terater&quot;</span><span class="p">,</span><span class="s2">&quot;terhadapxd&quot;</span><span class="p">,</span><span class="s2">&quot;termination&quot;</span><span class="p">,</span><span class="s2">&quot;terpisahpisah&quot;</span><span class="p">,</span><span class="s2">&quot;tersebutxd&quot;</span><span class="p">,</span><span class="s2">&quot;tertentuumumnya&quot;</span><span class="p">,</span><span class="s2">&quot;test&quot;</span><span class="p">,</span><span class="s2">&quot;testes&quot;</span><span class="p">,</span><span class="s2">&quot;testing&quot;</span><span class="p">,</span><span class="s2">&quot;thinning&quot;</span><span class="p">,</span><span class="s2">&quot;thomas&quot;</span><span class="p">,</span><span class="s2">&quot;threshold&quot;</span><span class="p">,</span><span class="s2">&quot;tiaptiap&quot;</span><span class="p">,</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;tinggixd&quot;</span><span class="p">,</span><span class="s2">&quot;titiktitik&quot;</span><span class="p">,</span><span class="s2">&quot;tnpk&quot;</span><span class="p">,</span><span class="s2">&quot;to&quot;</span><span class="p">,</span><span class="s2">&quot;toba&quot;</span><span class="p">,</span><span class="s2">&quot;toefl&quot;</span><span class="p">,</span><span class="s2">&quot;toeflxd&quot;</span><span class="p">,</span><span class="s2">&quot;togaf&quot;</span><span class="p">,</span><span class="s2">&quot;tool&quot;</span><span class="p">,</span><span class="s2">&quot;tools&quot;</span><span class="p">,</span><span class="s2">&quot;tooltool&quot;</span><span class="p">,</span><span class="s2">&quot;topsis&quot;</span><span class="p">,</span><span class="s2">&quot;traffic&quot;</span><span class="p">,</span><span class="s2">&quot;tragah&quot;</span><span class="p">,</span><span class="s2">&quot;training&quot;</span><span class="p">,</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span><span class="s2">&quot;treshold&quot;</span><span class="p">,</span><span class="s2">&quot;truth&quot;</span><span class="p">,</span><span class="s2">&quot;tsai&quot;</span><span class="p">,</span><span class="s2">&quot;tujuansetelah&quot;</span><span class="p">,</span><span class="s2">&quot;tulangan&quot;</span><span class="p">,</span><span class="s2">&quot;tuneup&quot;</span><span class="p">,</span><span class="s2">&quot;two&quot;</span><span class="p">,</span><span class="s2">&quot;ujicoba&quot;</span><span class="p">,</span><span class="s2">&quot;userxd&quot;</span><span class="p">,</span><span class="s2">&quot;utnuk&quot;</span><span class="p">,</span><span class="s2">&quot;validitas&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">,</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span><span class="s2">&quot;velocity&quot;</span><span class="p">,</span><span class="s2">&quot;vii&quot;</span><span class="p">,</span><span class="s2">&quot;virtual&quot;</span><span class="p">,</span><span class="s2">&quot;vision&quot;</span><span class="p">,</span><span class="s2">&quot;vr&quot;</span><span class="p">,</span><span class="s2">&quot;wachid&quot;</span><span class="p">,</span><span class="s2">&quot;waktuxd&quot;</span><span class="p">,</span><span class="s2">&quot;waterfall&quot;</span><span class="p">,</span><span class="s2">&quot;watershed&quot;</span><span class="p">,</span><span class="s2">&quot;wavelet&quot;</span><span class="p">,</span><span class="s2">&quot;web&quot;</span><span class="p">,</span><span class="s2">&quot;website&quot;</span><span class="p">,</span><span class="s2">&quot;webxd&quot;</span><span class="p">,</span><span class="s2">&quot;wide&quot;</span><span class="p">,</span><span class="s2">&quot;window&quot;</span><span class="p">,</span><span class="s2">&quot;winnowing&quot;</span><span class="p">,</span><span class="s2">&quot;world&quot;</span><span class="p">,</span><span class="s2">&quot;www&quot;</span><span class="p">,</span><span class="s2">&quot;xd&quot;</span><span class="p">,</span><span class="s2">&quot;xna&quot;</span><span class="p">,</span><span class="s2">&quot;yakersuda&quot;</span><span class="p">,</span><span class="s2">&quot;yangxd&quot;</span><span class="p">,</span><span class="s1">&#39;baiknya&#39;</span><span class="p">,</span> <span class="s1">&#39;berkali&#39;</span><span class="p">,</span> <span class="s1">&#39;kali&#39;</span><span class="p">,</span> <span class="s1">&#39;kurangnya&#39;</span><span class="p">,</span> <span class="s1">&#39;mata&#39;</span><span class="p">,</span> <span class="s1">&#39;olah&#39;</span><span class="p">,</span> <span class="s1">&#39;sekurang&#39;</span><span class="p">,</span> <span class="s1">&#39;setidak&#39;</span><span class="p">,</span><span class="s1">&#39;tama&#39;</span><span class="p">,</span> <span class="s1">&#39;tidaknya&#39;</span><span class="p">])</span>
+<span class="n">stop_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stop_words</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="term-weighting">
+<h2>4. Term Weighting<a class="headerlink" href="#term-weighting" title="Permalink to this headline">#</a></h2>
+<p><em>Term frequency-inverse document frequency</em> (TF-IDF) adalah metode yang digunakan untuk menghitung berat setiap term dengan mencari seberapa jauh hubungan antara kata atau istilah dengan dokumen. Metode TF-IDF adalah efisien dan memiliki hasil yang akurat. Proses yang dilakukan di metode ini untuk menghitung nilai <em>term frequency</em> (TF) dan <em>inverse document frequency</em> (IDF) untuk setiap token di setiap token di setiap dokumen di korpus [2]. Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vect</span> <span class="o">=</span><span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="n">stop_words</span><span class="p">,</span><span class="n">max_features</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">vect_text</span><span class="o">=</span><span class="n">vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">vect_text</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Tf_data[‘TP_Abstrak’] merupakan output dari proses text pre-processing</p></li>
+<li><p>vect_text digunakan sebagai input untuk langkah selanjutnya yaitu LSA.</p></li>
+</ul>
+</section>
+<section id="latent-semantic-analysis-lsa">
+<h2>5. <em>Latent Semantic Analysis</em> (LSA)<a class="headerlink" href="#latent-semantic-analysis-lsa" title="Permalink to this headline">#</a></h2>
+<section id="pengertian-lsa">
+<h3>Pengertian LSA<a class="headerlink" href="#pengertian-lsa" title="Permalink to this headline">#</a></h3>
+<p><em>Latent Semantic Analysis</em> (LSA) adalah metode analisis struktur semantik teks menggunakan model statistik matematis. LSA dapat digunakan untuk menilai esai dengan mengubahnya menjadi matriks yang diberi skor untuk setiap term dan mencari kesamaan dengan term referensi [3]. Adapun langkah-langkah dari LSA adalah sebagai berikut:</p>
+</section>
+<section id="step-lsa">
+<h3><em>Step</em> LSA<a class="headerlink" href="#step-lsa" title="Permalink to this headline">#</a></h3>
+<section id="singular-value-decomposition">
+<h4>Singular Value Decomposition<a class="headerlink" href="#singular-value-decomposition" title="Permalink to this headline">#</a></h4>
+<p>Setelah melalui proses <em>text pre-processing</em> dan <em>term weighting</em> maka proses selanjutnya adalah proses <em>singular value decomposition.</em> <em>Singular Value Decomposition</em> (SVD) merupakan  teknik reduksi dimensi yang membantu mengurangi nilai kompleksitas saat pemrosesan <em>term-document matrix</em>. SVD adalah teorema aljabar linier yang menunjukkan bahwa persegi panjang dalam <em>term-document matrix</em> dapat dipecah / didekomposisi menjadi tiga matriks, yakni :</p>
+<ul class="simple">
+<li><p>Matriks ortogonal  U</p></li>
+<li><p>Matriks diagonal S</p></li>
+<li><p>Transpos matriks ortogonal V</p></li>
+</ul>
+<p>Sehingga didapatkan persamaan:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ll}
+A_{m n} &amp; =U_{m m} x S_{m n} x V_{n n}^{T} \\
+\mathrm{~A}_{m n} &amp; =\quad \text { matriks awal } \\
+\mathrm{U}_{m m} &amp; =\quad \text { matriks ortogonal U } \\
+\mathrm{S}_{m n}= &amp; \text { matriks diagonal S } \\
+\mathrm{V}_{n n}^{\top}= &amp; \text { transpose matriks ortogonal V }
+\end{array}
+\end{split}\]</div>
+<p>Adapun codenya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lsa_model</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;randomized&#39;</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">lsa_topik</span><span class="o">=</span><span class="n">lsa_model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">vect_text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lsa_topik</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Hasil dari proses SVD adalah vektor yang  digunakan untuk menghitung kemiripan dokumen.</p>
+</section>
+<section id="menampilkan-hasil-topik-tiap-dokumen">
+<h4>Menampilkan hasil topik tiap dokumen.<a class="headerlink" href="#menampilkan-hasil-topik-tiap-dokumen" title="Permalink to this headline">#</a></h4>
+<p>Setelah proses SVD maka dapat dilakukan proses menampilkan hasil topik tiap dokumen, dan pada kali ini contoh topik yang ditampilkan adalah topik pada dokumen 1 sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="o">=</span><span class="n">lsa_topik</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Document 0 :&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">topic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Topic &quot;</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot; : &quot;</span><span class="p">,</span><span class="n">topic</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="menghasilkan-nilai-komponen-tiap-topik">
+<h4>Menghasilkan nilai komponen tiap topik.<a class="headerlink" href="#menghasilkan-nilai-komponen-tiap-topik" title="Permalink to this headline">#</a></h4>
+<p>Menampilkan nilai komponen tiap topik juga penting dilakukan karena sebagai input untuk proses selanjutnya yakni menampilkan kata penting pada setiap topik.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">lsa_model</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1">#jml topik, jml kata</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lsa_model</span><span class="o">.</span><span class="n">components_</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="menghasilkan-kata-penting-tiap-topik">
+<h4>Menghasilkan kata penting tiap topik.<a class="headerlink" href="#menghasilkan-kata-penting-tiap-topik" title="Permalink to this headline">#</a></h4>
+<p>Setelah didapatkan nilai komponen maka selanjutnya dapat digunakan untuk menghasilkan daftar kata-kata penting untuk masing-masing dari 10 topik seperti yang ditunjukkan. Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># most important words for each topic</span>
+<span class="c1"># mendapatkan term</span>
+<span class="n">vocab</span> <span class="o">=</span> <span class="n">vect</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kata Penting :</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">komponen</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lsa_model</span><span class="o">.</span><span class="n">components_</span><span class="p">):</span>
+    <span class="n">vocab_comp</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vocab</span><span class="p">,</span> <span class="n">komponen</span><span class="p">)</span>
+    <span class="n">sorted_words</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">vocab_comp</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Topic &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;: &quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">sorted_words</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Adapun hasil akhir dari LSA adalah sebagai berikut:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Kata Penting :</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Topic 0:  citra batik metode data proses sistem nilai hasil tekstur pengenalan</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Topic 1:  citra batik tekstur ciri fitur kemiripan ekstraksi perolehan isi gambar</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Topic 2:  bahasa algoritma madura mobile android teknologi pembelajaran aplikasi arsitektur pencarian</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Topic 3:  tangan tulisan pengenalan sidik jari telapak skenario proses carakan senyum</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Topic 4:  produksi peramalan perusahaan penjualan algoritma permintaan pelanggan penjadwalan bahasa komputer</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Topic 5:  arsitektur bangkalan informasi dinas pelayanan bisnis tahapan peramalan kepegawaian sistem</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Topic 6:  sidik jari pendeteksian citra manusia skenario gizi region titik pasien</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Topic 7:  gizi pasien status peramalan obat balita penentuan data nilai kebutuhan</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Topic 8:  gizi mobile pasien citra status android teknologi balita gerakan perusahaan</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Topic 9:  gizi bahasa madura pasien pelanggan status batik perusahaan sidik jari</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="referensi">
+<h2>Referensi<a class="headerlink" href="#referensi" title="Permalink to this headline">#</a></h2>
+<p>[1] : Crawling adalah ? Bagaimana Cara Kerja Web Crawler?. Website: <a class="reference external" href="http://maximadigital.id/crawling-adalah/">http://maximadigital.id/crawling-adalah/</a>, diakses pada 16 Juni 2022.</p>
+<p>[2] : Fitri, H., dkk (2021). Topic Modeling in the News Document on Sustainable. Tersedia dari <a class="reference external" href="http://jurnal.ugm.ac.id">jurnal.ugm.ac.id</a> [<a class="reference external" href="https://www.jurnal.ugm.ac.id/ijitee/article/view/67467/32203">https://www.jurnal.ugm.ac.id/ijitee/article/view/67467/32203</a>].</p>
+<p>[3] : Penggunaan Latent Semantic Analysis (LSA) dalam Pemrosesan Teks. Website: <a class="reference external" href="https://socs.binus.ac.id/2015/08/03/penggunaan-latent-semantic-analysis-lsa-dalam-pemrosesan-teks/">https://socs.binus.ac.id/2015/08/03/penggunaan-latent-semantic-analysis-lsa-dalam-pemrosesan-teks/</a>, diakses 16 Juni 2022.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Materi tentang Webmining</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Firda Ayu S<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
