@@ -54,6 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Latent Semantic Analysis (LSA)" href="lsa.html" />
     <link rel="prev" title="Materi tentang Webmining" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -118,6 +119,14 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Topic Modelling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lsa.html">
+   <em>
+    Latent Semantic Analysis
+   </em>
+   (LSA)
   </a>
  </li>
 </ul>
@@ -923,7 +932,30 @@ title="Print to PDF"
 </section>
 <section id="term-weighting">
 <h2>4. Term Weighting<a class="headerlink" href="#term-weighting" title="Permalink to this headline">#</a></h2>
-<p><em>Term frequency-inverse document frequency</em> (TF-IDF) adalah metode yang digunakan untuk menghitung berat setiap term dengan mencari seberapa jauh hubungan antara kata atau istilah dengan dokumen. Metode TF-IDF adalah efisien dan memiliki hasil yang akurat. Proses yang dilakukan di metode ini untuk menghitung nilai <em>term frequency</em> (TF) dan <em>inverse document frequency</em> (IDF) untuk setiap token di setiap token di setiap dokumen di korpus [2]. Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<p><em>Term frequency-inverse document frequency</em> (TF-IDF) adalah metode yang digunakan untuk menghitung berat setiap term dengan mencari seberapa jauh hubungan antara kata atau istilah dengan dokumen. Metode TF-IDF adalah efisien dan memiliki hasil yang akurat. Proses yang dilakukan di metode ini untuk menghitung nilai <em>term frequency</em> (TF) dan <em>inverse document frequency</em> (IDF) untuk setiap token di setiap token di setiap dokumen di korpus [2].</p>
+<p>Untuk menentukan besaran nilai IDF maka menggunakan rumus:</p>
+<div class="math notranslate nohighlight">
+\[
+IDF_{i, j}=log \frac{D}{df_{j}}
+\]</div>
+<p>Dimana,</p>
+<p>D : jumlah semua dokumen.</p>
+<p>dfj : jumlah dokumen yang mengandung term (j).</p>
+<p>Sehingga persamaan dari term frequency-inverse document frequency adalah sebagai berikut:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+w_{i, j}=t f_{i, j} \times {idf_{j}} \\
+w_{i, j}=t f_{i, j} \times \log \frac{D}{df_{j}}
+\end{split}\]</div>
+<p>Dimana,</p>
+<p>Wij : bobot term (j) terhadap (i).</p>
+<p>tfij : jumlah kemunculan term (j) dalam dokumen (i).</p>
+<p>Berapapun besarnya nilai <em>tfij</em>, apabila <em>D = dfj</em>, maka hasilnya adalah 0 (nol), dikarenakan hasil dari <em>log 1</em> adalah 0. Untuk itu dapat ditambahkan nilai 1 pada sisi IDF, sehingga perhitungan bobotnya menjadi sebagai berikut :</p>
+<div class="math notranslate nohighlight">
+\[
+w_{i, j}=t f_{i, j} \times \log \frac{D}{df_{j}} + 1
+\]</div>
+<p>Adapun <em>code</em>nya adalah sebagai berikut:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vect</span> <span class="o">=</span><span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="n">stop_words</span><span class="p">,</span><span class="n">max_features</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">vect_text</span><span class="o">=</span><span class="n">vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstrak&#39;</span><span class="p">])</span>
 
@@ -948,17 +980,17 @@ title="Print to PDF"
 <p>Setelah melalui proses <em>text pre-processing</em> dan <em>term weighting</em> maka proses selanjutnya adalah proses <em>singular value decomposition.</em> <em>Singular Value Decomposition</em> (SVD) merupakan  teknik reduksi dimensi yang membantu mengurangi nilai kompleksitas saat pemrosesan <em>term-document matrix</em>. SVD adalah teorema aljabar linier yang menunjukkan bahwa persegi panjang dalam <em>term-document matrix</em> dapat dipecah / didekomposisi menjadi tiga matriks, yakni :</p>
 <ul class="simple">
 <li><p>Matriks ortogonal  U</p></li>
-<li><p>Matriks diagonal S</p></li>
+<li><p>Matriks diagonal D</p></li>
 <li><p>Transpos matriks ortogonal V</p></li>
 </ul>
 <p>Sehingga didapatkan persamaan:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{ll}
-A_{m n} &amp; =U_{m m} x S_{m n} x V_{n n}^{T} \\
+A_{m n} &amp; =U_{m m} x D_{m n} x V_{n n}^{T} \\
 \mathrm{~A}_{m n} &amp; =\quad \text { matriks awal } \\
 \mathrm{U}_{m m} &amp; =\quad \text { matriks ortogonal U } \\
-\mathrm{S}_{m n}= &amp; \text { matriks diagonal S } \\
+\mathrm{D}_{m n}= &amp; \text { matriks diagonal D } \\
 \mathrm{V}_{n n}^{\top}= &amp; \text { transpose matriks ortogonal V }
 \end{array}
 \end{split}\]</div>
@@ -1079,6 +1111,13 @@ A_{m n} &amp; =U_{m m} x S_{m n} x V_{n n}^{T} \\
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Materi tentang Webmining</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="lsa.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><em>Latent Semantic Analysis</em> (LSA)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

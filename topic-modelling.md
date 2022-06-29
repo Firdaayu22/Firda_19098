@@ -242,7 +242,40 @@ stop_words = set(stop_words)
 
 ## 4. Term Weighting
 
-*Term frequency-inverse document frequency* (TF-IDF) adalah metode yang digunakan untuk menghitung berat setiap term dengan mencari seberapa jauh hubungan antara kata atau istilah dengan dokumen. Metode TF-IDF adalah efisien dan memiliki hasil yang akurat. Proses yang dilakukan di metode ini untuk menghitung nilai *term frequency* (TF) dan *inverse document frequency* (IDF) untuk setiap token di setiap token di setiap dokumen di korpus [2]. Adapun *code*nya adalah sebagai berikut:
+*Term frequency-inverse document frequency* (TF-IDF) adalah metode yang digunakan untuk menghitung berat setiap term dengan mencari seberapa jauh hubungan antara kata atau istilah dengan dokumen. Metode TF-IDF adalah efisien dan memiliki hasil yang akurat. Proses yang dilakukan di metode ini untuk menghitung nilai *term frequency* (TF) dan *inverse document frequency* (IDF) untuk setiap token di setiap token di setiap dokumen di korpus [2]. 
+
+Untuk menentukan besaran nilai IDF maka menggunakan rumus:
+
+$$
+IDF_{i, j}=log \frac{D}{df_{j}}
+$$
+
+Dimana,
+
+D : jumlah semua dokumen.
+
+dfj : jumlah dokumen yang mengandung term (j).
+
+Sehingga persamaan dari term frequency-inverse document frequency adalah sebagai berikut:
+
+$$
+w_{i, j}=t f_{i, j} \times {idf_{j}} \\
+w_{i, j}=t f_{i, j} \times \log \frac{D}{df_{j}}
+$$
+
+Dimana,
+
+Wij : bobot term (j) terhadap (i).
+
+tfij : jumlah kemunculan term (j) dalam dokumen (i).
+
+Berapapun besarnya nilai *tfij*, apabila *D = dfj*, maka hasilnya adalah 0 (nol), dikarenakan hasil dari *log 1* adalah 0. Untuk itu dapat ditambahkan nilai 1 pada sisi IDF, sehingga perhitungan bobotnya menjadi sebagai berikut :
+
+$$
+w_{i, j}=t f_{i, j} \times \log \frac{D}{df_{j}} + 1
+$$
+
+Adapun *code*nya adalah sebagai berikut:
 
 ```python
 vect =TfidfVectorizer(stop_words=stop_words,max_features=1000)
@@ -270,17 +303,17 @@ print(vect_text)
 Setelah melalui proses *text pre-processing* dan *term weighting* maka proses selanjutnya adalah proses *singular value decomposition.* *Singular Value Decomposition* (SVD) merupakan  teknik reduksi dimensi yang membantu mengurangi nilai kompleksitas saat pemrosesan *term-document matrix*. SVD adalah teorema aljabar linier yang menunjukkan bahwa persegi panjang dalam *term-document matrix* dapat dipecah / didekomposisi menjadi tiga matriks, yakni :
 
 - Matriks ortogonal  U
-- Matriks diagonal S 
+- Matriks diagonal D
 - Transpos matriks ortogonal V
 
 Sehingga didapatkan persamaan:
 
 $$
 \begin{array}{ll}
-A_{m n} & =U_{m m} x S_{m n} x V_{n n}^{T} \\
+A_{m n} & =U_{m m} x D_{m n} x V_{n n}^{T} \\
 \mathrm{~A}_{m n} & =\quad \text { matriks awal } \\
 \mathrm{U}_{m m} & =\quad \text { matriks ortogonal U } \\
-\mathrm{S}_{m n}= & \text { matriks diagonal S } \\
+\mathrm{D}_{m n}= & \text { matriks diagonal D } \\
 \mathrm{V}_{n n}^{\top}= & \text { transpose matriks ortogonal V }
 \end{array}
 $$
