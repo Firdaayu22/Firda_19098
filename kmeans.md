@@ -252,9 +252,9 @@ K-means merupakan  algoritma pembelajaran yang tidak terawasi. K-Means digunakan
 
 ### Step K-Means
 
-- ##### Tentukan Jumlah Cluster (K)
+- **Tentukan Jumlah Cluster (K)**
 
-- ##### Pilih Titik Acak Sebanyak K
+- **Pilih Titik Acak Sebanyak K**
 
   Adapun codenya adalah sebagai berikut:
 
@@ -264,7 +264,7 @@ K-means merupakan  algoritma pembelajaran yang tidak terawasi. K-Means digunakan
 
   
 
-- ##### Menghitung jarak data dengan centroid. 
+- **Menghitung jarak data dengan centroid.** 
 
   Adapun persamaan *Euclidean Distance* yang digunakan adalah sebagai berikut:
 
@@ -281,7 +281,7 @@ model.fit(vect)
 
 
 
-- ##### Label Semua Data Berdasarkan Cluster Terdekat
+- **Label Semua Data Berdasarkan Cluster Terdekat**
 
   Adapun codenya adalah sebagai berikut:
 
@@ -298,7 +298,7 @@ model.fit(vect)
 
   
 
-- ##### Gunakan PCA untuk mereduksi dimensi
+- **Gunakan PCA untuk mereduksi dimensi**
 
   Adapun codenya adalah sebagai berikut:
 
@@ -321,11 +321,11 @@ model.fit(vect)
 
   
 
-- ##### Label Ulang Data Berdasarkan Jarak Terdekat terhadap Centroid Baru
+- **Label Ulang Data Berdasarkan Jarak Terdekat terhadap Centroid Baru**
 
-- ##### Ulangi Langkah Sampai Tidak Ada Pergerakan Lagi.
+- **Ulangi Langkah Sampai Tidak Ada Pergerakan Lagi.**
 
-- ##### Grafik hasil K-Means
+- **Grafik hasil K-Means**
 
   Adapun codenya adalah sebagai berikut:
 
