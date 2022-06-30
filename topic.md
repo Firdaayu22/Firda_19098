@@ -80,7 +80,7 @@ import scrapy
 class WebminingSpider(scrapy.Spider):
     name = 'webmining'
     allowed_domains = ['pta.trunojoyo.ac.id']
-    start_urls = ['https://pta.trunojoyo.ac.id/c_search/byprod/10/'+str(x)+'' for x in range (2, 15)]
+    start_urls = ['https://pta.trunojoyo.ac.id/c_search/byprod/7/'+str(x)+'' for x in range(1,5)]
     
 	#element button yang mengarah ke link data yang dicari 
     def parse(self, response):
@@ -94,19 +94,15 @@ class WebminingSpider(scrapy.Spider):
             yield {
                 #mendapatkan data "judul"
                 #strip() digunakan untuk merapikan data
-                'Judul' : product.css('div a.title::text').get().strip(),
+                'judul' : product.css('div a.title::text').get().strip(),
                 #mendapatkan data "penulis"
-                'Penulis' : product.css('div div:nth-child(2) span::text').get().strip(),
-                #mendapatkan data "pembimbing I"
-                'Pembimbing I' : product.css('div div:nth-child(3) span::text').get().strip(),
-                #mendapatkan data "pembimbing II"
-                'Pembimbing II' : product.css('div div:nth-child(4) span::text').get().strip(),
-                #mendapatkan data "abstrak"
-                'Abstrak' : product.css('div div:nth-child(2) p::text').get().strip(),
+                'penulis' : product.css('div div:nth-child(2) span::text').get().strip(),
+                #mendapatkan data "abstraksi"
+                'abstraksi' : product.css('div div:nth-child(2) p::text').get().strip(),
             }
 ```
 
-Pada *"start_urls"* link dapat diubah-ubah sesuai kebutuhan dan pada kali ini dilakukan perulangan atau iterasi sebanyak 15 yang berfokus pada tugas akhir mahasiswa Teknik Informatika.
+Pada *"start_urls"* link dapat diubah-ubah sesuai kebutuhan dan pada kali ini dilakukan perulangan atau iterasi sebanyak 5 yang berfokus pada tugas akhir mahasiswa Manajemen.
 
 #### Simpan data hasil crawling
 
@@ -149,7 +145,7 @@ from sklearn.decomposition import TruncatedSVD
 Setelah *import modul, read data* yang telah di-*crawling* menggunakan *library pandas*.
 
 ```python
-Tf_data = pd.read_csv("PTAscrawls.csv")
+Tf_data = pd.read_csv("datapta.csv")
 Tf_data
 ```
 
@@ -168,10 +164,9 @@ Pra-pemrosesan teks merupakan proses yang dilakukan untuk mengolah data yang aka
 Case folding merupakan proses untuk mengubah kalimat dalam teks menjadi huruf kecil [2]. Adapun *code*nya adalah sebagai berikut:
 
 ```python
-Tf_data['TP_Abstrak'] = Tf_data['Abstrak'].str.lower()
+Tf_data['TP_Abstraksi'] = Tf_data['abstraksi'].str.lower()
 
-#untuk menampilkan 5 hasil case folding teratas
-print(Tf_data['TP_Abstrak'].head(5))
+print(Tf_data['TP_Abstraksi'].head(5))
 ```
 
 
@@ -213,15 +208,14 @@ def remove_singl_char(text):
     return re.sub(r"\b[a-zA-Z]\b", "", text)
 
 #menerapkan fungsi-fungsi yang telah dibuat diatas
-Tf_data['TP_Abstrak'] = Tf_data['TP_Abstrak'].apply(remove_text_special)
-Tf_data['TP_Abstrak'] = Tf_data['TP_Abstrak'].apply(remove_number)
-Tf_data['TP_Abstrak'] = Tf_data['TP_Abstrak'].apply(remove_punctuation)
-Tf_data['TP_Abstrak'] = Tf_data['TP_Abstrak'].apply(remove_whitespace_LT)
-Tf_data['TP_Abstrak'] = Tf_data['TP_Abstrak'].apply(remove_whitespace_multiple)
-Tf_data['TP_Abstrak'] = Tf_data['TP_Abstrak'].apply(remove_singl_char)
+Tf_data['TP_Abstraksi'] = Tf_data['TP_Abstraksi'].apply(remove_text_special)
+Tf_data['TP_Abstraksi'] = Tf_data['TP_Abstraksi'].apply(remove_number)
+Tf_data['TP_Abstraksi'] = Tf_data['TP_Abstraksi'].apply(remove_punctuation)
+Tf_data['TP_Abstraksi'] = Tf_data['TP_Abstraksi'].apply(remove_whitespace_LT)
+Tf_data['TP_Abstraksi'] = Tf_data['TP_Abstraksi'].apply(remove_whitespace_multiple)
+Tf_data['TP_Abstraksi'] = Tf_data['TP_Abstraksi'].apply(remove_singl_char)
 
-#menampilkan hasil cleaning data 5 teratas
-print(Tf_data['TP_Abstrak'].head())
+print(Tf_data['TP_Abstraksi'].head())
 ```
 
 
@@ -232,9 +226,7 @@ Stopword removal merupakan proses untuk menghapus kata yang tidak penting dan ti
 
 ```python
 stop_words = stopwords.words('indonesian')
-
-#untuk menghapus kata yang seharusnya dihapus namun tidak terhapus
-stop_words.extend(["aam","absolute","abstract","abstrakxd","adm","ahp","ai","aid","akanxd","akhirxd","alert","algorithm","alpha","alternative","ambroxol","analysis","analytic","analytical","and","angkaangka","angular","anp","apl","aplikasixd","application","architecture","artifical","as","asesoris","attribute","automatic","average","babnyajika","background","bahanbahan","baikxd","balanced","base","based","basic","bc","beasiwa","benarbenar","benedict","beratxd","berbedabeda","berturutturut","bifurcation","binaryzation","bisoprolol","bkd","block","blue","bold","bolditalic","bpp","bps","browsing","bsc","business","by","canny","caps","cbir","cefixime","center","centroid","chain","chaining","chainning","character","cipherteks","class","classfier","classification","classifier","close","cluster","clustering","coding","combat","commerce","component","compute","computer","confix","content","contex","context","corepoint","corpus","cosine","criteria","criteriaxd","crm","crossing","customer","cut","cycle","dalamxd","darixd","database","datadata","dataxd","daviesbouldin","decision","decomposition","defuzzyfikasi","dekripsi","denga","denganxd","depanxd","depth","design","development","dibatasixd","dicarixd","difference","diprosesxd","direction","disegmentasi","disk","disperindag","distance","distemming","dkpp","dlda","dominant","download","dperoleh","dr","drop","dsebut","eclipse","ecommerce","ecommercexd","economic","edge","edm","education","egovernment","eigenxd","ekuitas","electre","electreii","electronic","emulator","engghibunten","engine","engineering","enginexd","english","enhanced","enjeiyeh","enterprise","environment","eoq","epoch","epoh","error","eucledian","euclidean","exploiting","exponential","express","fahp","fanp","feature","fighting","filter","filtering","fine","fingerprint","fingerprintbitmaps","finite","firewall","first","fisik","fmeasure","fmop","font","foreign","forward","framework","free","frustasi","fsm","function","fuzzy","fvc","galis","game","games","garisgaris","gateway","gaussian","geometry","gizixd","gldm","glrm","gr","gradient","gradients","gray","grayscaling","grcitra","ground","growth","ha","haar","had","handwriting","harris","hash","hh","hidden","hierarchy","high","hijauxd","hl","hog","ht","idb","ii","ij","iksass","image","indahmulya","indicator","indicators","infoinfo","inginxd","inixd","inktech","interface","interprise","intervace","intervensi","interview","intraseluler","intrusion","invariant","inventori","ips","iptables","italic","jaringanjaringan","jarixd","java","jejaring","jiwaxd","jst","kabupatenkabupaten","kaganga","kallista","karakterkarakter","karapanxd","kec","kerapan","kerjasamaxd","kesejahteraanya","key","keypoint","keyword","keywords","kg","kit","kkm","kluster","kmeans","kohonen","kokop","komulatif","konang","konekasi","kpi","kriteriakriteria","kriteriaxd","ksom","kub","kuisioner","kuisoner","lainlain","lainxd","langkahlangkah","language","languange","latent","layer","lda","learning","least","length","lerning","leveling","lh","life","light","linier","link","listening","ll","load","log","logic","low","lsa","lsasom","lt","lunakxd","lunturnya","lvq","lyapunov","machine","madistrindo","maduraindonesia","maduraxd","mail","making","malan","mamdani","management","manager","mandiriauto","map","mape","maps","mapserver","martodirdjo","masingmasing","masking","matching","matrix","maze","mazexd","mcdm","mdf","mean","melakukanxd","membatu","memilikixd","mengenkripsi","menggunakanxd","message","metadata","method","mg","middleware","minimnya","minutea","minutiae","modung","momentum","monitoring","morfologi","mosaic","mosaikpanoramik","moving","mpc","mse","multiatribute","multimedia","multiobjective","multiple","naive","nave","nbc","negaranegara","network","neural","ngram","node","nomor","non","npc","number","numberxd","nya","obatobatan","objective","obyek","obyektif","of","offline","ofr","oldinary","ols","omax","ontologi","ontology","open","optical","optimized","optimiztion","optimum","ordered","organizing","oriented","orl","output","owl","panoramic","panoramik","panoteng","parameterparameter","parsing","part","particle","pasienxd","pattern","pca","pe","pejualan","pelajarsantri","pelevelan","pemvalidasian","penjadwaln","perankingan","perankingannya","percentage","perconbaan","performance","periodeperiode","permasalaha","perusahaanxd","pihakpihak","pihakxd","pixel","pixels","plainteks","plasmodium","plastec","platform","playable","player","pmg","podhek","point","pose","ppa","prakandidat","precision","preference","presentase","preshion","prevention","prim","principal","prinsipnya","print","prism","probabilitasmetode","process","processing","produksipada","produktivitas","profitabilitas","programing","programming","programprogram","project","prosentase","prosesnya","pso","pt","ptxd","quantity","quantization","query","rangkebbhan","rank","ranks","raskin","ratarata","rate","rater","rating","ratus","rbfn","rbfnn","rbfnnxd","rc","rdf","reading","real","realistisxd","realitas","reality","realtime","recall","recognition","rekomndasi","relative","release","resource","resources","responden","retrieval","reuse","ridge","riilxd","rill","riwayatxd","rehabilitasi","roughness","rts","run","saaty","salafiyah","roughness","sales","sasaranxd","satunya","satunya","scale","scm","scorecard","scoring","screen","sdk","sdkxd","sdlc","sdm","search","second","security","segmentasinya","seharihari","sekuensial","self","semantic","sencitivity","seolaholah","separation","seringkali","server","service","ses","seseorangxd","shop","shortest","sift","sikannya","similar","similaritas","similarity","simple","simtak","single","singular","sistemxd","skenarioskenario","sky","sma","smarter","smartphone","smoothing","smooting","smp","sms","snort","software","solusinya","solusinyaxd","solution","som","sort","source","spare","spasial","spci","speaking","specificity","speech","spk","square","stakeholder","state","statistik","statusxd","stemmer","stemming","stockpile","strategi","strategy","straw","stripping","style","sub","subkriteria","subset","subsistem","subtropics","subyektivitas","sumenep","suplier","supplier","supply","swarm","syafiiyah","system","tab","tamansepanjang","technique","telekomunikasi","terater","terhadapxd","termination","terpisahpisah","tersebutxd","tertentuumumnya","test","testes","testing","thinning","thomas","threshold","tiaptiap","time","tinggixd","titiktitik","tnpk","to","toba","toefl","toeflxd","togaf","tool","tools","tooltool","topsis","traffic","tragah","training","transform","treshold","truth","tsai","tujuansetelah","tulangan","tuneup","two","ujicoba","userxd","utnuk","validitas","value","vector","velocity","vii","virtual","vision","vr","wachid","waktuxd","waterfall","watershed","wavelet","web","website","webxd","wide","window","winnowing","world","www","xd","xna","yakersuda","yangxd",'baiknya', 'berkali', 'kali', 'kurangnya', 'mata', 'olah', 'sekurang', 'setidak','tama', 'tidaknya'])
+stop_words.extend(['baiknya', 'berkali', 'kali', 'kurangnya', 'mata', 'olah', 'sekurang', 'setidak', 'tama', 'tidaknya'])
 stop_words = set(stop_words)
 ```
 
@@ -279,7 +271,7 @@ Adapun *code*nya adalah sebagai berikut:
 
 ```python
 vect =TfidfVectorizer(stop_words=stop_words,max_features=1000)
-vect_text=vect.fit_transform(Tf_data['TP_Abstrak'])
+vect_text=vect.fit_transform(Tf_data['TP_Abstraksi'])
 
 print(vect_text)
 ```
@@ -378,16 +370,16 @@ Adapun hasil akhir dari LSA adalah sebagai berikut:
 
 | Kata Penting :                                               |
 | :----------------------------------------------------------- |
-| Topic 0:  citra batik metode data proses sistem nilai hasil tekstur pengenalan |
-| Topic 1:  citra batik tekstur ciri fitur kemiripan ekstraksi perolehan isi gambar |
-| Topic 2:  bahasa algoritma madura mobile android teknologi pembelajaran aplikasi arsitektur pencarian |
-| Topic 3:  tangan tulisan pengenalan sidik jari telapak skenario proses carakan senyum |
-| Topic 4:  produksi peramalan perusahaan penjualan algoritma permintaan pelanggan penjadwalan bahasa komputer |
-| Topic 5:  arsitektur bangkalan informasi dinas pelayanan bisnis tahapan peramalan kepegawaian sistem |
-| Topic 6:  sidik jari pendeteksian citra manusia skenario gizi region titik pasien |
-| Topic 7:  gizi pasien status peramalan obat balita penentuan data nilai kebutuhan |
-| Topic 8:  gizi mobile pasien citra status android teknologi balita gerakan perusahaan |
-| Topic 9:  gizi bahasa madura pasien pelanggan status batik perusahaan sidik jari |
+| Topic 0:  variabel penelitian konsumen harga uji pengaruh kepuasan pembelian keputusan signifikan |
+| Topic 1:  kerja pegawai prestasi pengembangan kepemimpinan tipe produktivitas kompensasi dinas kabupaten |
+| Topic 2:  ratio lamongan bank npl resiko risk bersaing inovasi keunggulan tingkat |
+| Topic 3:  kepuasan akademik portal pelanggan langsung kualitas jaminan indeks madura universitas |
+| Topic 4:  dimensi persepsi minat banking internet association brand cranberries distro kiddrock |
+| Topic 5:  kompetensi langsung dosen kinerja pembelian kompensasi hipotesis honda vario pedagogik |
+| Topic 6:  biaya produk bersaing inovasi keunggulan cacat pelaporan profitabilitas langsung risiko |
+| Topic 7:  biaya variabel cacat pelaporan profitabilitas kualitas produk risiko kompensasi kompetensi |
+| Topic 8:  kompetensi bersaing inovasi keunggulan kinerja dosen optik reza pemasaran harga |
+| Topic 9:  kompetensi dosen uji biaya akademik cacat pelaporan profitabilitas pln risiko |
 
 
 

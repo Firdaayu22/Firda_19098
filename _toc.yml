@@ -4,5 +4,8 @@
 format: jb-book
 root: intro
 chapters:
-- file: topic-modelling
+- file: topic
 - file: lsa 
+- url: https://colab.research.google.com/drive/1IEZfOntnHMbprmgNHsGML0T436nyVk_T?usp=sharing
+- file: kmeans
+- url: https://colab.research.google.com/drive/16qdSZaaEU1MPsTsH5PAE-a_83ztD3Ai3?usp=sharing

@@ -177,16 +177,16 @@ Adapun hasil akhir dari LSA adalah sebagai berikut:
 
 | Kata Penting :                                               |
 | :----------------------------------------------------------- |
-| Topic 0:  citra batik metode data proses sistem nilai hasil tekstur pengenalan |
-| Topic 1:  citra batik tekstur ciri fitur kemiripan ekstraksi perolehan isi gambar |
-| Topic 2:  bahasa algoritma madura mobile android teknologi pembelajaran aplikasi arsitektur pencarian |
-| Topic 3:  tangan tulisan pengenalan sidik jari telapak skenario proses carakan senyum |
-| Topic 4:  produksi peramalan perusahaan penjualan algoritma permintaan pelanggan penjadwalan bahasa komputer |
-| Topic 5:  arsitektur bangkalan informasi dinas pelayanan bisnis tahapan peramalan kepegawaian sistem |
-| Topic 6:  sidik jari pendeteksian citra manusia skenario gizi region titik pasien |
-| Topic 7:  gizi pasien status peramalan obat balita penentuan data nilai kebutuhan |
-| Topic 8:  gizi mobile pasien citra status android teknologi balita gerakan perusahaan |
-| Topic 9:  gizi bahasa madura pasien pelanggan status batik perusahaan sidik jari |
+| Topic 0:  variabel penelitian konsumen harga uji pengaruh kepuasan pembelian keputusan signifikan |
+| Topic 1:  kerja pegawai prestasi pengembangan kepemimpinan tipe produktivitas kompensasi dinas kabupaten |
+| Topic 2:  ratio lamongan bank npl resiko risk bersaing inovasi keunggulan tingkat |
+| Topic 3:  kepuasan akademik portal pelanggan langsung kualitas jaminan indeks madura universitas |
+| Topic 4:  dimensi persepsi minat banking internet association brand cranberries distro kiddrock |
+| Topic 5:  kompetensi langsung dosen kinerja pembelian kompensasi hipotesis honda vario pedagogik |
+| Topic 6:  biaya produk bersaing inovasi keunggulan cacat pelaporan profitabilitas langsung risiko |
+| Topic 7:  biaya variabel cacat pelaporan profitabilitas kualitas produk risiko kompensasi kompetensi |
+| Topic 8:  kompetensi bersaing inovasi keunggulan kinerja dosen optik reza pemasaran harga |
+| Topic 9:  kompetensi dosen uji biaya akademik cacat pelaporan profitabilitas pln risiko |
 
 
 
