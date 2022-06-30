@@ -452,6 +452,48 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#step-k-means">
      Step K-Means
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tentukan-jumlah-cluster-k">
+       Tentukan Jumlah Cluster (K)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pilih-titik-acak-sebanyak-k">
+       Pilih Titik Acak Sebanyak K
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menghitung-jarak-data-dengan-centroid">
+       Menghitung jarak data dengan centroid.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#label-semua-data-berdasarkan-cluster-terdekat">
+       Label Semua Data Berdasarkan Cluster Terdekat
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#gunakan-pca-untuk-mereduksi-dimensi">
+       Gunakan PCA untuk mereduksi dimensi
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#label-ulang-data-berdasarkan-jarak-terdekat-terhadap-centroid-baru">
+       Label Ulang Data Berdasarkan Jarak Terdekat terhadap Centroid Baru
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ulangi-langkah-sampai-tidak-ada-pergerakan-lagi">
+       Ulangi Langkah Sampai Tidak Ada Pergerakan Lagi.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#grafik-hasil-k-means">
+       Grafik hasil K-Means
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#kelebihan-k-means">
@@ -618,6 +660,48 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#step-k-means">
      Step K-Means
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tentukan-jumlah-cluster-k">
+       Tentukan Jumlah Cluster (K)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pilih-titik-acak-sebanyak-k">
+       Pilih Titik Acak Sebanyak K
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menghitung-jarak-data-dengan-centroid">
+       Menghitung jarak data dengan centroid.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#label-semua-data-berdasarkan-cluster-terdekat">
+       Label Semua Data Berdasarkan Cluster Terdekat
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#gunakan-pca-untuk-mereduksi-dimensi">
+       Gunakan PCA untuk mereduksi dimensi
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#label-ulang-data-berdasarkan-jarak-terdekat-terhadap-centroid-baru">
+       Label Ulang Data Berdasarkan Jarak Terdekat terhadap Centroid Baru
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ulangi-langkah-sampai-tidak-ada-pergerakan-lagi">
+       Ulangi Langkah Sampai Tidak Ada Pergerakan Lagi.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#grafik-hasil-k-means">
+       Grafik hasil K-Means
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#kelebihan-k-means">
@@ -654,12 +738,6 @@ title="Print to PDF"
 </section>
 <section id="jenis-jenis-algoritma-clustering">
 <h2>Jenis-Jenis Algoritma Clustering<a class="headerlink" href="#jenis-jenis-algoritma-clustering" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ul>
 <section id="centeroid-based-clustering">
 <h3>Centeroid-Based Clustering<a class="headerlink" href="#centeroid-based-clustering" title="Permalink to this headline">#</a></h3>
 <p>Metode berbasis centeroid merupakan salah satu metode clustering yang paling banyak digunakan. Mengelompokkan data  ke dalam <em>non-hierarchical clusters</em>. <em>Non-hierarchical clusters</em> adalah tipe cluster efisien yang sensitif terhadap <em>outlier</em>. Tipe ini juga termasuk dalam algoritma iteratif, dimana setiap <em>cluster</em> biasanya  dibentuk terlebih dahulu dari jarak terdekat dengan <em>centroid</em> (pusat cluster). Kemudian data yang sama dikelompokkan sebanyak mungkin. Oleh karena itu, pengelompokan jenis ini telah menjadi metode yang sangat umum [1].</p>
@@ -880,29 +958,30 @@ w_{i, j}=t f_{i, j} \times \log \frac{D}{df_{j}}
 </section>
 <section id="step-k-means">
 <h3>Step K-Means<a class="headerlink" href="#step-k-means" title="Permalink to this headline">#</a></h3>
-<ul>
-<li><p><strong>Tentukan Jumlah Cluster (K)</strong></p></li>
-<li><p><strong>Pilih Titik Acak Sebanyak K</strong></p>
+<section id="tentukan-jumlah-cluster-k">
+<h4>Tentukan Jumlah Cluster (K)<a class="headerlink" href="#tentukan-jumlah-cluster-k" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="pilih-titik-acak-sebanyak-k">
+<h4>Pilih Titik Acak Sebanyak K<a class="headerlink" href="#pilih-titik-acak-sebanyak-k" title="Permalink to this headline">#</a></h4>
 <p>Adapun codenya adalah sebagai berikut:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">true_k</span> <span class="o">=</span> <span class="mi">5</span>
 </pre></div>
 </div>
-</li>
-<li><p><strong>Menghitung jarak data dengan centroid.</strong></p>
-<p>Adapun persamaan <em>Euclidean Distance</em> yang digunakan adalah sebagai berikut:</p>
-</li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
+</section>
+<section id="menghitung-jarak-data-dengan-centroid">
+<h4>Menghitung jarak data dengan centroid.<a class="headerlink" href="#menghitung-jarak-data-dengan-centroid" title="Permalink to this headline">#</a></h4>
+<p>Adapun persamaan <em>Euclidean Distance</em> yang digunakan adalah sebagai berikut:
+$<span class="math notranslate nohighlight">\(
 d=\sqrt{\left(x_{2}-x_{1}\right)^{2}+\left(y_{2}-y_{1}\right)^{2}}
-\]</div>
+\)</span>$</p>
 <p>Adapun codenya adalah sebagai berikut:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">true_k</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">vect</span><span class="p">)</span>
 </pre></div>
 </div>
-<ul>
-<li><p><strong>Label Semua Data Berdasarkan Cluster Terdekat</strong></p>
+</section>
+<section id="label-semua-data-berdasarkan-cluster-terdekat">
+<h4>Label Semua Data Berdasarkan Cluster Terdekat<a class="headerlink" href="#label-semua-data-berdasarkan-cluster-terdekat" title="Permalink to this headline">#</a></h4>
 <p>Adapun codenya adalah sebagai berikut:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Top terms per cluster:&quot;</span><span class="p">)</span>
 <span class="n">order_centroids</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -914,8 +993,9 @@ d=\sqrt{\left(x_{2}-x_{1}\right)^{2}+\left(y_{2}-y_{1}\right)^{2}}
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
-<li><p><strong>Gunakan PCA untuk mereduksi dimensi</strong></p>
+</section>
+<section id="gunakan-pca-untuk-mereduksi-dimensi">
+<h4>Gunakan PCA untuk mereduksi dimensi<a class="headerlink" href="#gunakan-pca-untuk-mereduksi-dimensi" title="Permalink to this headline">#</a></h4>
 <p>Adapun codenya adalah sebagai berikut:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="c1"># pass vector to the pca and store the reduced vectors into pca_vecs</span>
@@ -932,10 +1012,15 @@ d=\sqrt{\left(x_{2}-x_{1}\right)^{2}+\left(y_{2}-y_{1}\right)^{2}}
 <span class="nb">print</span> <span class="p">(</span><span class="n">x1</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
-<li><p><strong>Label Ulang Data Berdasarkan Jarak Terdekat terhadap Centroid Baru</strong></p></li>
-<li><p><strong>Ulangi Langkah Sampai Tidak Ada Pergerakan Lagi.</strong></p></li>
-<li><p><strong>Grafik hasil K-Means</strong></p>
+</section>
+<section id="label-ulang-data-berdasarkan-jarak-terdekat-terhadap-centroid-baru">
+<h4>Label Ulang Data Berdasarkan Jarak Terdekat terhadap Centroid Baru<a class="headerlink" href="#label-ulang-data-berdasarkan-jarak-terdekat-terhadap-centroid-baru" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="ulangi-langkah-sampai-tidak-ada-pergerakan-lagi">
+<h4>Ulangi Langkah Sampai Tidak Ada Pergerakan Lagi.<a class="headerlink" href="#ulangi-langkah-sampai-tidak-ada-pergerakan-lagi" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="grafik-hasil-k-means">
+<h4>Grafik hasil K-Means<a class="headerlink" href="#grafik-hasil-k-means" title="Permalink to this headline">#</a></h4>
 <p>Adapun codenya adalah sebagai berikut:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hasil KMeans Clustering&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">})</span>
@@ -948,8 +1033,7 @@ d=\sqrt{\left(x_{2}-x_{1}\right)^{2}+\left(y_{2}-y_{1}\right)^{2}}
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</li>
-</ul>
+</section>
 </section>
 <section id="kelebihan-k-means">
 <h3>Kelebihan K-Means<a class="headerlink" href="#kelebihan-k-means" title="Permalink to this headline">#</a></h3>
