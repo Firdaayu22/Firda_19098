@@ -6,21 +6,21 @@
 
 ## Jenis-Jenis Algoritma Clustering
 
-- #### Centeroid-Based Clustering
+#### Centeroid-Based Clustering
 
-  Metode berbasis centeroid merupakan salah satu metode clustering yang paling banyak digunakan. Mengelompokkan data  ke dalam *non-hierarchical clusters*. *Non-hierarchical clusters* adalah tipe cluster efisien yang sensitif terhadap *outlier*. Tipe ini juga termasuk dalam algoritma iteratif, dimana setiap *cluster* biasanya  dibentuk terlebih dahulu dari jarak terdekat dengan *centroid* (pusat cluster). Kemudian data yang sama dikelompokkan sebanyak mungkin. Oleh karena itu, pengelompokan jenis ini telah menjadi metode yang sangat umum [1].
+Metode berbasis centeroid merupakan salah satu metode clustering yang paling banyak digunakan. Mengelompokkan data  ke dalam *non-hierarchical clusters*. *Non-hierarchical clusters* adalah tipe cluster efisien yang sensitif terhadap *outlier*. Tipe ini juga termasuk dalam algoritma iteratif, dimana setiap *cluster* biasanya  dibentuk terlebih dahulu dari jarak terdekat dengan *centroid* (pusat cluster). Kemudian data yang sama dikelompokkan sebanyak mungkin. Oleh karena itu, pengelompokan jenis ini telah menjadi metode yang sangat umum [1].
 
-- #### Density-Based Clustering
+#### Density-Based Clustering
 
-  Metode ini bekerja dengan menggabungkan data yang sama dengan data yang sama lainnya. Metode ini biasanya digunakan untuk mengelompokkan data yang berbeda berdasarkan nilai dimensi yang tinggi. Kemudian *cluster* dibentuk oleh sumber data yang sama. Data dengan kepadatan yang sama dengan jumlah tertentu dapat disebut grup. Sebaliknya, sejumlah kecil data yang sama disebut *outlier* atau *noise* [1].
+Metode ini bekerja dengan menggabungkan data yang sama dengan data yang sama lainnya. Metode ini biasanya digunakan untuk mengelompokkan data yang berbeda berdasarkan nilai dimensi yang tinggi. Kemudian *cluster* dibentuk oleh sumber data yang sama. Data dengan kepadatan yang sama dengan jumlah tertentu dapat disebut grup. Sebaliknya, sejumlah kecil data yang sama disebut *outlier* atau *noise* [1].
 
-- #### Distribution-Based Clustering
+#### Distribution-Based Clustering
 
-  Pengelompokan atau asumsi data dilakukan dengan metode distribusi. Oleh karena itu, metode yang satu ini disebut *Distribution Based*. Peningkatan jarak dari pusat cluster diharapkan dapat mengurangi jumlah data semi-identik. Pengelompokan data biner dapat digunakan untuk mengelompokkan data besar atau kecil. Cara ini juga banyak digunakan karena hasilnya padat dan tingkat identiknya cukup tinggi [1].
+Pengelompokan atau asumsi data dilakukan dengan metode distribusi. Oleh karena itu, metode yang satu ini disebut *Distribution Based*. Peningkatan jarak dari pusat cluster diharapkan dapat mengurangi jumlah data semi-identik. Pengelompokan data biner dapat digunakan untuk mengelompokkan data besar atau kecil. Cara ini juga banyak digunakan karena hasilnya padat dan tingkat identiknya cukup tinggi [1].
 
-- #### Hierarchical Clustering
+#### Hierarchical Clustering
 
-  *Hierarchical Clustering* atau *Connectivity Based Cluster*, penggunaannya  mirip dengan cluster berbasis *Centroid*. Sederhananya, metode ini mengidentifikasi data berdasarkan jarak terdekat pada kondisi diskriminan tertentu. Selain itu, metode ini bekerja pada sistem dasar di mana data terdekat memiliki sifat yang sama dibandingkan dengan data yang jauh. Dendogram merupakan dasar yang digunakan untuk merepresentasikan pengelompokan data [1].
+*Hierarchical Clustering* atau *Connectivity Based Cluster*, penggunaannya  mirip dengan cluster berbasis *Centroid*. Sederhananya, metode ini mengidentifikasi data berdasarkan jarak terdekat pada kondisi diskriminan tertentu. Selain itu, metode ini bekerja pada sistem dasar di mana data terdekat memiliki sifat yang sama dibandingkan dengan data yang jauh. Dendogram merupakan dasar yang digunakan untuk merepresentasikan pengelompokan data [1].
 
 ## Step *Clustering*
 
@@ -252,22 +252,21 @@ K-means merupakan  algoritma pembelajaran yang tidak terawasi. K-Means digunakan
 
 ### Step K-Means
 
-- **Tentukan Jumlah Cluster (K)**
+##### Tentukan Jumlah Cluster (K)
 
-- **Pilih Titik Acak Sebanyak K**
+##### Pilih Titik Acak Sebanyak K
 
-  Adapun codenya adalah sebagai berikut:
+Adapun codenya adalah sebagai berikut:
 
-  ```python
-  true_k = 5
-  ```
+```python
+true_k = 5
+```
 
-  
 
-- **Menghitung jarak data dengan centroid.** 
 
-  Adapun persamaan *Euclidean Distance* yang digunakan adalah sebagai berikut:
+##### Menghitung jarak data dengan centroid. 
 
+Adapun persamaan *Euclidean Distance* yang digunakan adalah sebagai berikut:
 $$
 d=\sqrt{\left(x_{2}-x_{1}\right)^{2}+\left(y_{2}-y_{1}\right)^{2}}
 $$
@@ -281,67 +280,67 @@ model.fit(vect)
 
 
 
-- **Label Semua Data Berdasarkan Cluster Terdekat**
+##### Label Semua Data Berdasarkan Cluster Terdekat
 
-  Adapun codenya adalah sebagai berikut:
+Adapun codenya adalah sebagai berikut:
 
-  ```python
-  print("Top terms per cluster:")
-  order_centroids = model.cluster_centers_.argsort()[:, ::-1]
-  terms = vectorizer.get_feature_names()
-  for i in range(true_k):
-      print("Cluster %d:" % i),
-      for ind in order_centroids[i, :10]:
-          print('%s' % terms[ind],end=" ")
-      print("\n")
-  ```
+```python
+print("Top terms per cluster:")
+order_centroids = model.cluster_centers_.argsort()[:, ::-1]
+terms = vectorizer.get_feature_names()
+for i in range(true_k):
+    print("Cluster %d:" % i),
+    for ind in order_centroids[i, :10]:
+        print('%s' % terms[ind],end=" ")
+    print("\n")
+```
 
-  
 
-- **Gunakan PCA untuk mereduksi dimensi**
 
-  Adapun codenya adalah sebagai berikut:
+##### Gunakan PCA untuk mereduksi dimensi
 
-  ```python
-  pca = PCA(n_components=3, random_state=42)
-  # pass vector to the pca and store the reduced vectors into pca_vecs
-  pca_vecs = pca.fit_transform(vect.toarray())
-  x0 = pca_vecs[:, 0]
-  x1 = pca_vecs[:, 1]
-  ```
+Adapun codenya adalah sebagai berikut:
 
-  ```python
-  #menambahkan cluster ke dataset
-  Tf_data['cluster'] = model.labels_
-  Tf_data['x0'] = x0
-  Tf_data['x1'] = x1
-  print (x0)
-  print (x1)
-  ```
+```python
+pca = PCA(n_components=3, random_state=42)
+# pass vector to the pca and store the reduced vectors into pca_vecs
+pca_vecs = pca.fit_transform(vect.toarray())
+x0 = pca_vecs[:, 0]
+x1 = pca_vecs[:, 1]
+```
 
-  
+```python
+#menambahkan cluster ke dataset
+Tf_data['cluster'] = model.labels_
+Tf_data['x0'] = x0
+Tf_data['x1'] = x1
+print (x0)
+print (x1)
+```
 
-- **Label Ulang Data Berdasarkan Jarak Terdekat terhadap Centroid Baru**
 
-- **Ulangi Langkah Sampai Tidak Ada Pergerakan Lagi.**
 
-- **Grafik hasil K-Means**
+##### Label Ulang Data Berdasarkan Jarak Terdekat terhadap Centroid Baru
 
-  Adapun codenya adalah sebagai berikut:
+##### Ulangi Langkah Sampai Tidak Ada Pergerakan Lagi.
 
-  ```python
-  plt.figure(figsize=(12, 7))
-  plt.title("Hasil KMeans Clustering", fontdict={"fontsize": 18})
-  
-  plt.xlabel("X0", fontdict={"fontsize": 16})
-  plt.ylabel("X1", fontdict={"fontsize": 16})
-  
-  # create scatter plot with seaborn, where hue is the class used to group the data
-  sns.scatterplot(data=Tf_data, x='x0', y='x1', hue='cluster', palette="viridis")
-  plt.show()
-  ```
+##### Grafik hasil K-Means
 
-  
+Adapun codenya adalah sebagai berikut:
+
+```python
+plt.figure(figsize=(12, 7))
+plt.title("Hasil KMeans Clustering", fontdict={"fontsize": 18})
+
+plt.xlabel("X0", fontdict={"fontsize": 16})
+plt.ylabel("X1", fontdict={"fontsize": 16})
+
+# create scatter plot with seaborn, where hue is the class used to group the data
+sns.scatterplot(data=Tf_data, x='x0', y='x1', hue='cluster', palette="viridis")
+plt.show()
+```
+
+
 
 ### Kelebihan K-Means
 
