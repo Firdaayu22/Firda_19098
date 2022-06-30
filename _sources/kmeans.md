@@ -242,7 +242,6 @@ print(vect)
 
 - vect digunakan sebagai input untuk langkah selanjutnya yaitu K-Means.
 
-  
 
 ## 4. *K-Means Clustering*
 
@@ -262,8 +261,6 @@ Adapun codenya adalah sebagai berikut:
 true_k = 5
 ```
 
-
-
 ##### Menghitung jarak data dengan centroid. 
 
 Adapun persamaan *Euclidean Distance* yang digunakan adalah sebagai berikut:
@@ -277,8 +274,6 @@ Adapun codenya adalah sebagai berikut:
 model = KMeans(n_clusters=true_k, init='k-means++', max_iter=100, n_init=1)
 model.fit(vect)
 ```
-
-
 
 ##### Label Semua Data Berdasarkan Cluster Terdekat
 
