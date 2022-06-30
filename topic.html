@@ -1,0 +1,1157 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Topic Modelling &#8212; Web Mining</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Latent Semantic Analysis (LSA)" href="lsa.html" />
+    <link rel="prev" title="Materi tentang Webmining" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logoku.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Web Mining</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Materi tentang Webmining
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Topic Modelling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lsa.html">
+   <em>
+    Latent Semantic Analysis
+   </em>
+   (LSA)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1IEZfOntnHMbprmgNHsGML0T436nyVk_T?usp=sharing">
+   https://colab.research.google.com/drive/1IEZfOntnHMbprmgNHsGML0T436nyVk_T?usp=sharing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kmeans.html">
+   Algoritma
+   <em>
+    Clustering
+   </em>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/16qdSZaaEU1MPsTsH5PAE-a_83ztD3Ai3?usp=sharing">
+   https://colab.research.google.com/drive/16qdSZaaEU1MPsTsH5PAE-a_83ztD3Ai3?usp=sharing
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/Firdaayu22/Firda_19098"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/Firdaayu22/Firda_19098/issues/new?title=Issue%20on%20page%20%2Ftopic.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/topic.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pengertian-topic-modelling">
+   Pengertian
+   <em>
+    Topic Modelling
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-topic-modelling">
+   Step
+   <em>
+    Topic Modelling
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#crawling-data">
+   1.
+   <em>
+    Crawling Data
+   </em>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-crawling-data">
+     Pengertian
+     <em>
+      Crawling Data
+     </em>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-crawling-data">
+     <em>
+      Step Crawling Data
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mencari-url-yang-dituju">
+       Mencari URL yang dituju.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-scrapy">
+       Install scrapy
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#membuat-project-baru">
+       Membuat project baru
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#membuat-file-spider-baru">
+       Membuat
+       <em>
+        file spider
+       </em>
+       baru
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#edit-file-spider">
+       Edit file spider
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simpan-data-hasil-crawling">
+       Simpan data hasil crawling
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#persiapan-data">
+   2. Persiapan Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-modul">
+     Import modul
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#read-data">
+     Read data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#text-pre-processing">
+   3.
+   <em>
+    Text Pre-processing
+   </em>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-pre-processing">
+     Pengertian
+     <em>
+      Pre-processing
+     </em>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-pre-processing">
+     <em>
+      Step Pre-processing
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#case-folding">
+       Case Folding
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cleaning-data">
+       Cleaning Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stopword-removal">
+       Stopword Removal
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#term-weighting">
+   4. Term Weighting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#latent-semantic-analysis-lsa">
+   5.
+   <em>
+    Latent Semantic Analysis
+   </em>
+   (LSA)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-lsa">
+     Pengertian LSA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-lsa">
+     <em>
+      Step
+     </em>
+     LSA
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#singular-value-decomposition">
+       Singular Value Decomposition
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menampilkan-hasil-topik-tiap-dokumen">
+       Menampilkan hasil topik tiap dokumen.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menghasilkan-nilai-komponen-tiap-topik">
+       Menghasilkan nilai komponen tiap topik.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menghasilkan-kata-penting-tiap-topik">
+       Menghasilkan kata penting tiap topik.
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referensi">
+   Referensi
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Topic Modelling</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pengertian-topic-modelling">
+   Pengertian
+   <em>
+    Topic Modelling
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-topic-modelling">
+   Step
+   <em>
+    Topic Modelling
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#crawling-data">
+   1.
+   <em>
+    Crawling Data
+   </em>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-crawling-data">
+     Pengertian
+     <em>
+      Crawling Data
+     </em>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-crawling-data">
+     <em>
+      Step Crawling Data
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mencari-url-yang-dituju">
+       Mencari URL yang dituju.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-scrapy">
+       Install scrapy
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#membuat-project-baru">
+       Membuat project baru
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#membuat-file-spider-baru">
+       Membuat
+       <em>
+        file spider
+       </em>
+       baru
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#edit-file-spider">
+       Edit file spider
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simpan-data-hasil-crawling">
+       Simpan data hasil crawling
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#persiapan-data">
+   2. Persiapan Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-modul">
+     Import modul
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#read-data">
+     Read data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#text-pre-processing">
+   3.
+   <em>
+    Text Pre-processing
+   </em>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-pre-processing">
+     Pengertian
+     <em>
+      Pre-processing
+     </em>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-pre-processing">
+     <em>
+      Step Pre-processing
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#case-folding">
+       Case Folding
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cleaning-data">
+       Cleaning Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stopword-removal">
+       Stopword Removal
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#term-weighting">
+   4. Term Weighting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#latent-semantic-analysis-lsa">
+   5.
+   <em>
+    Latent Semantic Analysis
+   </em>
+   (LSA)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-lsa">
+     Pengertian LSA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-lsa">
+     <em>
+      Step
+     </em>
+     LSA
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#singular-value-decomposition">
+       Singular Value Decomposition
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menampilkan-hasil-topik-tiap-dokumen">
+       Menampilkan hasil topik tiap dokumen.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menghasilkan-nilai-komponen-tiap-topik">
+       Menghasilkan nilai komponen tiap topik.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menghasilkan-kata-penting-tiap-topik">
+       Menghasilkan kata penting tiap topik.
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referensi">
+   Referensi
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="topic-modelling">
+<h1>Topic Modelling<a class="headerlink" href="#topic-modelling" title="Permalink to this headline">#</a></h1>
+<section id="pengertian-topic-modelling">
+<h2>Pengertian <em>Topic Modelling</em><a class="headerlink" href="#pengertian-topic-modelling" title="Permalink to this headline">#</a></h2>
+<p><em>Topic modelling</em> merupakan bentuk penambangan teks yang digunakan untuk mengidentifikasi pola dalam korpus. <em>Topic Modelling</em> juga merupakan pendekatan  yang cukup handal untuk penambangan teks untuk menemukan data teks tersembunyi dan menemukan hubungan antara satu teks  dengan teks lainnya dari korpus (Jelodar, et al., 2018) atau dapat disimpulkan bahwa <em>Topic Modelling</em> merupakan mengelompokkan data tekstual berdasarkan topik tertentu.</p>
+</section>
+<section id="step-topic-modelling">
+<h2>Step <em>Topic Modelling</em><a class="headerlink" href="#step-topic-modelling" title="Permalink to this headline">#</a></h2>
+<p>Tahapan atau langkah-langkah dari <em>Topic Modelling</em> adalah sebagai berikut:</p>
+</section>
+<section id="crawling-data">
+<h2>1. <em>Crawling Data</em><a class="headerlink" href="#crawling-data" title="Permalink to this headline">#</a></h2>
+<section id="pengertian-crawling-data">
+<h3>Pengertian <em>Crawling Data</em><a class="headerlink" href="#pengertian-crawling-data" title="Permalink to this headline">#</a></h3>
+<p>Crawling Data merupakan proses melakukan pencarian dan pemindaian sebuah konten/data pada website. Data crawling adalah aktivitas crawler untuk mengindeks sebuah data dan mengunduh dari internet yang kemudian akan disimpan ke dalam database [1].</p>
+<p>Proses <em>crawling</em> dapat dilakukan dengan berbagai cara namun pada kali ini proses <em>crawling</em> dilakukan menggunakan <em>Scrapy Python</em>. Adapun untuk tahapan-tahapan dari proses crawling adalah sebagai berikut:</p>
+</section>
+<section id="step-crawling-data">
+<h3><em>Step Crawling Data</em><a class="headerlink" href="#step-crawling-data" title="Permalink to this headline">#</a></h3>
+<section id="mencari-url-yang-dituju">
+<h4>Mencari URL yang dituju.<a class="headerlink" href="#mencari-url-yang-dituju" title="Permalink to this headline">#</a></h4>
+<p>Tentukan URL yang akan diambil datanya, sebagai contoh pada proses kali ini menggambil data tugas akhir Universitas Trunojoyo Madura yakni <a class="reference external" href="https://pta.trunojoyo.ac.id">https://pta.trunojoyo.ac.id</a>.</p>
+</section>
+<section id="install-scrapy">
+<h4>Install scrapy<a class="headerlink" href="#install-scrapy" title="Permalink to this headline">#</a></h4>
+<p>Setelah memastikan URL yang dituju, maka tahap selanjutnya adalah menginstal scrapy menggunakan perintah :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">scrapy</span>
+</pre></div>
+</div>
+</section>
+<section id="membuat-project-baru">
+<h4>Membuat project baru<a class="headerlink" href="#membuat-project-baru" title="Permalink to this headline">#</a></h4>
+<p>Setelah berhasil menginstal scrapy maka tahap selanjutnya adalah membuat <em>project scrapy</em> baru menggunakan perintah:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">startproject</span> <span class="n">projectname</span>
+</pre></div>
+</div>
+<p>Dengan,</p>
+<ul class="simple">
+<li><p>projectname : nama project baru</p></li>
+</ul>
+</section>
+<section id="membuat-file-spider-baru">
+<h4>Membuat <em>file spider</em> baru<a class="headerlink" href="#membuat-file-spider-baru" title="Permalink to this headline">#</a></h4>
+<p>Apabila telah berhasil membuat <em>project scrapy</em> baru maka masuk ke direktori folder tersebut dan kemudian membuat <em>file spider</em> baru mengunakan perintah:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">genspider</span> <span class="n">newspider</span> <span class="n">urltujuan</span>
+</pre></div>
+</div>
+<p>Dengan,</p>
+<ul class="simple">
+<li><p>newspider : nama file spider baru.</p></li>
+<li><p>urltujuan : link URL yang akan dituju.</p></li>
+</ul>
+</section>
+<section id="edit-file-spider">
+<h4>Edit file spider<a class="headerlink" href="#edit-file-spider" title="Permalink to this headline">#</a></h4>
+<p>Buka file <a class="reference external" href="http://spider.py">spider.py</a> pada <em>text editor</em>, buka terminal dan buka <em>scrapy console</em> menggunakan perintah:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>scrapy shell ‘pta.tunojoyo.ac.id’
+</pre></div>
+</div>
+<p>Setelah <em>console</em> berhasil terbuka, lakukan <em>inspect element</em> pada <em>website</em> tersebut untuk mendapatkan <em>element</em> yang berisi data-data yang ingin dicari seperti judul, penulis, pembimbing I, pembimbing II dan abstrak dan jalankan pada <em>console</em> apabila telah berhasil maka <em>copy paste code</em> tadi untuk di-<em>input</em> ke dalam <em>file spider</em> tadi, sehingga hasilnya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+<span class="k">class</span> <span class="nc">WebminingSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;webmining&#39;</span>
+    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pta.trunojoyo.ac.id&#39;</span><span class="p">]</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://pta.trunojoyo.ac.id/c_search/byprod/7/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)]</span>
+    
+	<span class="c1">#element button yang mengarah ke link data yang dicari </span>
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;a.gray.button::attr(href)&#39;</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">response</span><span class="o">.</span><span class="n">follow</span><span class="p">(</span><span class="n">link</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_categories</span><span class="p">)</span>
+	
+    <span class="c1">#element tiap data yang dicari</span>
+    <span class="k">def</span> <span class="nf">parse_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">product</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div#content_journal ul li&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">product</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="p">{</span>
+                <span class="c1">#mendapatkan data &quot;judul&quot;</span>
+                <span class="c1">#strip() digunakan untuk merapikan data</span>
+                <span class="s1">&#39;judul&#39;</span> <span class="p">:</span> <span class="n">product</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div a.title::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="c1">#mendapatkan data &quot;penulis&quot;</span>
+                <span class="s1">&#39;penulis&#39;</span> <span class="p">:</span> <span class="n">product</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div div:nth-child(2) span::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="c1">#mendapatkan data &quot;abstraksi&quot;</span>
+                <span class="s1">&#39;abstraksi&#39;</span> <span class="p">:</span> <span class="n">product</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div div:nth-child(2) p::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+<p>Pada <em>“start_urls”</em> link dapat diubah-ubah sesuai kebutuhan dan pada kali ini dilakukan perulangan atau iterasi sebanyak 5 yang berfokus pada tugas akhir mahasiswa Manajemen.</p>
+</section>
+<section id="simpan-data-hasil-crawling">
+<h4>Simpan data hasil crawling<a class="headerlink" href="#simpan-data-hasil-crawling" title="Permalink to this headline">#</a></h4>
+<p>Setelah berhasil mengekstrak data maka tahap selanjutnya adalah menyimpan data sesuai format yang diinginkan menggunakan perintah:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">crawl</span> <span class="n">newspider</span> <span class="o">-</span><span class="n">o</span> <span class="n">hasil</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+<p>Dengan,</p>
+<ul class="simple">
+<li><p>newspider : file spider yang telah dibuat.</p></li>
+<li><p>hasil.csv : file csv untuk menyimpan hasil <em>crawling</em>.</p></li>
+</ul>
+<p>Buka kembali console dan ketikkan perintah diatas dan tunggu hingga proses selesai dan data siap digunakan.</p>
+</section>
+</section>
+</section>
+<section id="persiapan-data">
+<h2>2. Persiapan Data<a class="headerlink" href="#persiapan-data" title="Permalink to this headline">#</a></h2>
+<section id="import-modul">
+<h3>Import modul<a class="headerlink" href="#import-modul" title="Permalink to this headline">#</a></h3>
+<p><em>Import</em> modul-modul yang digunakan seperti <em>pandas, numpy, nltk, sklearn</em> dan lain sebagainya.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">string</span> 
+<span class="kn">import</span> <span class="nn">re</span> <span class="c1">#regex library</span>
+ 
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span>
+</pre></div>
+</div>
+</section>
+<section id="read-data">
+<h3>Read data<a class="headerlink" href="#read-data" title="Permalink to this headline">#</a></h3>
+<p>Setelah <em>import modul, read data</em> yang telah di-<em>crawling</em> menggunakan <em>library pandas</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Tf_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;datapta.csv&quot;</span><span class="p">)</span>
+<span class="n">Tf_data</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="text-pre-processing">
+<h2>3. <em>Text Pre-processing</em><a class="headerlink" href="#text-pre-processing" title="Permalink to this headline">#</a></h2>
+<section id="pengertian-pre-processing">
+<h3>Pengertian <em>Pre-processing</em><a class="headerlink" href="#pengertian-pre-processing" title="Permalink to this headline">#</a></h3>
+<p>Pra-pemrosesan teks merupakan proses yang dilakukan untuk mengolah data yang akan dianalisis menjadi data yang lebih mudah dipahami seperti menghapus noise, missing value, dan data yang tidak konsisten. Adapun tahapan dari <em>text pre-processing</em> adalah sebagai berikut:</p>
+</section>
+<section id="step-pre-processing">
+<h3><em>Step Pre-processing</em><a class="headerlink" href="#step-pre-processing" title="Permalink to this headline">#</a></h3>
+<section id="case-folding">
+<h4>Case Folding<a class="headerlink" href="#case-folding" title="Permalink to this headline">#</a></h4>
+<p>Case folding merupakan proses untuk mengubah kalimat dalam teks menjadi huruf kecil [2]. Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="cleaning-data">
+<h4>Cleaning Data<a class="headerlink" href="#cleaning-data" title="Permalink to this headline">#</a></h4>
+<p>Cleaning data merupakan proses untuk membersihkan dan menghapus text spesial seperti simbol, angka, link, whitespace dan lain-lain. Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Hapus teks spesial</span>
+<span class="k">def</span> <span class="nf">remove_text_special</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="c1"># hapus tab, new line, dan back slice</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">t&#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">n&#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">u&#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="c1"># hapus non ASCII (emoticon, chinese word, .etc)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="s1">&#39;replace&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+    <span class="c1"># hapus mention, link, hashtag</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;([@#][A-Za-z0-9]+)|(\w+:\/\/\S+)&quot;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+    <span class="c1"># hapus URL</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+<span class="c1">#hapus angka</span>
+<span class="k">def</span> <span class="nf">remove_number</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span>  <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="c1">#hapus tanda baca</span>
+<span class="k">def</span> <span class="nf">remove_punctuation</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
+
+<span class="c1">#hapus whitespace leading &amp; trailing</span>
+<span class="k">def</span> <span class="nf">remove_whitespace_LT</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="c1">#hapus multiple whitespace into single whitespace</span>
+<span class="k">def</span> <span class="nf">remove_whitespace_multiple</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c1">#hapus single char</span>
+<span class="k">def</span> <span class="nf">remove_singl_char</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\b[a-zA-Z]\b&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="c1">#menerapkan fungsi-fungsi yang telah dibuat diatas</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_text_special</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_number</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_punctuation</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_whitespace_LT</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_whitespace_multiple</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_singl_char</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="stopword-removal">
+<h4>Stopword Removal<a class="headerlink" href="#stopword-removal" title="Permalink to this headline">#</a></h4>
+<p>Stopword removal merupakan proses untuk menghapus kata yang tidak penting dan tidak memiliki makna seperti “yang”, “dari” dan lain-lain [2]. Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">)</span>
+<span class="n">stop_words</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;baiknya&#39;</span><span class="p">,</span> <span class="s1">&#39;berkali&#39;</span><span class="p">,</span> <span class="s1">&#39;kali&#39;</span><span class="p">,</span> <span class="s1">&#39;kurangnya&#39;</span><span class="p">,</span> <span class="s1">&#39;mata&#39;</span><span class="p">,</span> <span class="s1">&#39;olah&#39;</span><span class="p">,</span> <span class="s1">&#39;sekurang&#39;</span><span class="p">,</span> <span class="s1">&#39;setidak&#39;</span><span class="p">,</span> <span class="s1">&#39;tama&#39;</span><span class="p">,</span> <span class="s1">&#39;tidaknya&#39;</span><span class="p">])</span>
+<span class="n">stop_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stop_words</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="term-weighting">
+<h2>4. Term Weighting<a class="headerlink" href="#term-weighting" title="Permalink to this headline">#</a></h2>
+<p><em>Term frequency-inverse document frequency</em> (TF-IDF) adalah metode yang digunakan untuk menghitung berat setiap term dengan mencari seberapa jauh hubungan antara kata atau istilah dengan dokumen. Metode TF-IDF adalah efisien dan memiliki hasil yang akurat. Proses yang dilakukan di metode ini untuk menghitung nilai <em>term frequency</em> (TF) dan <em>inverse document frequency</em> (IDF) untuk setiap token di setiap token di setiap dokumen di korpus [2].</p>
+<p>Untuk menentukan besaran nilai IDF maka menggunakan rumus:</p>
+<div class="math notranslate nohighlight">
+\[
+IDF_{i, j}=log \frac{D}{df_{j}}
+\]</div>
+<p>Dimana,</p>
+<p>D : jumlah semua dokumen.</p>
+<p>dfj : jumlah dokumen yang mengandung term (j).</p>
+<p>Sehingga persamaan dari term frequency-inverse document frequency adalah sebagai berikut:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+w_{i, j}=t f_{i, j} \times {idf_{j}} \\
+w_{i, j}=t f_{i, j} \times \log \frac{D}{df_{j}}
+\end{split}\]</div>
+<p>Dimana,</p>
+<p>Wij : bobot term (j) terhadap (i).</p>
+<p>tfij : jumlah kemunculan term (j) dalam dokumen (i).</p>
+<p>Berapapun besarnya nilai <em>tfij</em>, apabila <em>D = dfj</em>, maka hasilnya adalah 0 (nol), dikarenakan hasil dari <em>log 1</em> adalah 0. Untuk itu dapat ditambahkan nilai 1 pada sisi IDF, sehingga perhitungan bobotnya menjadi sebagai berikut :</p>
+<div class="math notranslate nohighlight">
+\[
+w_{i, j}=t f_{i, j} \times \log \frac{D}{df_{j}} + 1
+\]</div>
+<p>Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vect</span> <span class="o">=</span><span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="n">stop_words</span><span class="p">,</span><span class="n">max_features</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">vect_text</span><span class="o">=</span><span class="n">vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">vect_text</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Tf_data[‘TP_Abstrak’] merupakan output dari proses text pre-processing</p></li>
+<li><p>vect_text digunakan sebagai input untuk langkah selanjutnya yaitu LSA.</p></li>
+</ul>
+</section>
+<section id="latent-semantic-analysis-lsa">
+<h2>5. <em>Latent Semantic Analysis</em> (LSA)<a class="headerlink" href="#latent-semantic-analysis-lsa" title="Permalink to this headline">#</a></h2>
+<section id="pengertian-lsa">
+<h3>Pengertian LSA<a class="headerlink" href="#pengertian-lsa" title="Permalink to this headline">#</a></h3>
+<p><em>Latent Semantic Analysis</em> (LSA) adalah metode analisis struktur semantik teks menggunakan model statistik matematis. LSA dapat digunakan untuk menilai esai dengan mengubahnya menjadi matriks yang diberi skor untuk setiap term dan mencari kesamaan dengan term referensi [3]. Adapun langkah-langkah dari LSA adalah sebagai berikut:</p>
+</section>
+<section id="step-lsa">
+<h3><em>Step</em> LSA<a class="headerlink" href="#step-lsa" title="Permalink to this headline">#</a></h3>
+<section id="singular-value-decomposition">
+<h4>Singular Value Decomposition<a class="headerlink" href="#singular-value-decomposition" title="Permalink to this headline">#</a></h4>
+<p>Setelah melalui proses <em>text pre-processing</em> dan <em>term weighting</em> maka proses selanjutnya adalah proses <em>singular value decomposition.</em> <em>Singular Value Decomposition</em> (SVD) merupakan  teknik reduksi dimensi yang membantu mengurangi nilai kompleksitas saat pemrosesan <em>term-document matrix</em>. SVD adalah teorema aljabar linier yang menunjukkan bahwa persegi panjang dalam <em>term-document matrix</em> dapat dipecah / didekomposisi menjadi tiga matriks, yakni :</p>
+<ul class="simple">
+<li><p>Matriks ortogonal  U</p></li>
+<li><p>Matriks diagonal D</p></li>
+<li><p>Transpos matriks ortogonal V</p></li>
+</ul>
+<p>Sehingga didapatkan persamaan:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ll}
+A_{m n} &amp; =U_{m m} x D_{m n} x V_{n n}^{T} \\
+\mathrm{~A}_{m n} &amp; =\quad \text { matriks awal } \\
+\mathrm{U}_{m m} &amp; =\quad \text { matriks ortogonal U } \\
+\mathrm{D}_{m n}= &amp; \text { matriks diagonal D } \\
+\mathrm{V}_{n n}^{\top}= &amp; \text { transpose matriks ortogonal V }
+\end{array}
+\end{split}\]</div>
+<p>Adapun codenya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lsa_model</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;randomized&#39;</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">lsa_topik</span><span class="o">=</span><span class="n">lsa_model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">vect_text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lsa_topik</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Hasil dari proses SVD adalah vektor yang  digunakan untuk menghitung kemiripan dokumen.</p>
+</section>
+<section id="menampilkan-hasil-topik-tiap-dokumen">
+<h4>Menampilkan hasil topik tiap dokumen.<a class="headerlink" href="#menampilkan-hasil-topik-tiap-dokumen" title="Permalink to this headline">#</a></h4>
+<p>Setelah proses SVD maka dapat dilakukan proses menampilkan hasil topik tiap dokumen, dan pada kali ini contoh topik yang ditampilkan adalah topik pada dokumen 1 sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="o">=</span><span class="n">lsa_topik</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Document 0 :&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">topic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Topic &quot;</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot; : &quot;</span><span class="p">,</span><span class="n">topic</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="menghasilkan-nilai-komponen-tiap-topik">
+<h4>Menghasilkan nilai komponen tiap topik.<a class="headerlink" href="#menghasilkan-nilai-komponen-tiap-topik" title="Permalink to this headline">#</a></h4>
+<p>Menampilkan nilai komponen tiap topik juga penting dilakukan karena sebagai input untuk proses selanjutnya yakni menampilkan kata penting pada setiap topik.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">lsa_model</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1">#jml topik, jml kata</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lsa_model</span><span class="o">.</span><span class="n">components_</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="menghasilkan-kata-penting-tiap-topik">
+<h4>Menghasilkan kata penting tiap topik.<a class="headerlink" href="#menghasilkan-kata-penting-tiap-topik" title="Permalink to this headline">#</a></h4>
+<p>Setelah didapatkan nilai komponen maka selanjutnya dapat digunakan untuk menghasilkan daftar kata-kata penting untuk masing-masing dari 10 topik seperti yang ditunjukkan. Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># most important words for each topic</span>
+<span class="c1"># mendapatkan term</span>
+<span class="n">vocab</span> <span class="o">=</span> <span class="n">vect</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kata Penting :</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">komponen</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lsa_model</span><span class="o">.</span><span class="n">components_</span><span class="p">):</span>
+    <span class="n">vocab_comp</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vocab</span><span class="p">,</span> <span class="n">komponen</span><span class="p">)</span>
+    <span class="n">sorted_words</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">vocab_comp</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Topic &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;: &quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">sorted_words</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Adapun hasil akhir dari LSA adalah sebagai berikut:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Kata Penting :</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Topic 0:  variabel penelitian konsumen harga uji pengaruh kepuasan pembelian keputusan signifikan</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Topic 1:  kerja pegawai prestasi pengembangan kepemimpinan tipe produktivitas kompensasi dinas kabupaten</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Topic 2:  ratio lamongan bank npl resiko risk bersaing inovasi keunggulan tingkat</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Topic 3:  kepuasan akademik portal pelanggan langsung kualitas jaminan indeks madura universitas</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Topic 4:  dimensi persepsi minat banking internet association brand cranberries distro kiddrock</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Topic 5:  kompetensi langsung dosen kinerja pembelian kompensasi hipotesis honda vario pedagogik</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Topic 6:  biaya produk bersaing inovasi keunggulan cacat pelaporan profitabilitas langsung risiko</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Topic 7:  biaya variabel cacat pelaporan profitabilitas kualitas produk risiko kompensasi kompetensi</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Topic 8:  kompetensi bersaing inovasi keunggulan kinerja dosen optik reza pemasaran harga</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Topic 9:  kompetensi dosen uji biaya akademik cacat pelaporan profitabilitas pln risiko</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="referensi">
+<h2>Referensi<a class="headerlink" href="#referensi" title="Permalink to this headline">#</a></h2>
+<p>[1] : Crawling adalah ? Bagaimana Cara Kerja Web Crawler?. Website: <a class="reference external" href="http://maximadigital.id/crawling-adalah/">http://maximadigital.id/crawling-adalah/</a>, diakses pada 16 Juni 2022.</p>
+<p>[2] : Fitri, H., dkk (2021). Topic Modeling in the News Document on Sustainable. Tersedia dari <a class="reference external" href="http://jurnal.ugm.ac.id">jurnal.ugm.ac.id</a> [<a class="reference external" href="https://www.jurnal.ugm.ac.id/ijitee/article/view/67467/32203">https://www.jurnal.ugm.ac.id/ijitee/article/view/67467/32203</a>].</p>
+<p>[3] : Penggunaan Latent Semantic Analysis (LSA) dalam Pemrosesan Teks. Website: <a class="reference external" href="https://socs.binus.ac.id/2015/08/03/penggunaan-latent-semantic-analysis-lsa-dalam-pemrosesan-teks/">https://socs.binus.ac.id/2015/08/03/penggunaan-latent-semantic-analysis-lsa-dalam-pemrosesan-teks/</a>, diakses 16 Juni 2022.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Materi tentang Webmining</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lsa.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><em>Latent Semantic Analysis</em> (LSA)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Firda Ayu S<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

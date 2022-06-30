@@ -1,0 +1,1144 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Algoritma Clustering &#8212; Web Mining</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Latent Semantic Analysis (LSA)" href="lsa.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logoku.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Web Mining</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Materi tentang Webmining
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="topic.html">
+   Topic Modelling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lsa.html">
+   <em>
+    Latent Semantic Analysis
+   </em>
+   (LSA)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1IEZfOntnHMbprmgNHsGML0T436nyVk_T?usp=sharing">
+   https://colab.research.google.com/drive/1IEZfOntnHMbprmgNHsGML0T436nyVk_T?usp=sharing
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Algoritma
+   <em>
+    Clustering
+   </em>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/16qdSZaaEU1MPsTsH5PAE-a_83ztD3Ai3?usp=sharing">
+   https://colab.research.google.com/drive/16qdSZaaEU1MPsTsH5PAE-a_83ztD3Ai3?usp=sharing
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/Firdaayu22/Firda_19098"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/Firdaayu22/Firda_19098/issues/new?title=Issue%20on%20page%20%2Fkmeans.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/kmeans.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pengertian-clustering">
+   Pengertian
+   <em>
+    Clustering
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jenis-jenis-algoritma-clustering">
+   Jenis-Jenis Algoritma Clustering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#centeroid-based-clustering">
+     Centeroid-Based Clustering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#density-based-clustering">
+     Density-Based Clustering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distribution-based-clustering">
+     Distribution-Based Clustering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hierarchical-clustering">
+     Hierarchical Clustering
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-clustering">
+   Step
+   <em>
+    Clustering
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#persiapan-data">
+   1. Persiapan Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-modul">
+     Import modul
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#read-data">
+     Read data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#text-pre-processing">
+   2.
+   <em>
+    Text Pre-processing
+   </em>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-pre-processing">
+     Pengertian
+     <em>
+      Pre-processing
+     </em>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-pre-processing">
+     <em>
+      Step Pre-processing
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#case-folding">
+       Case Folding
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tokenizing">
+       Tokenizing
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stopword-removal">
+       Stopword Removal
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stemming">
+       Stemming
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#term-weighting">
+   3. Term Weighting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-means-clustering">
+   4.
+   <em>
+    K-Means Clustering
+   </em>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-k-means">
+     Pengertian K-Means
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-k-means">
+     Step K-Means
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tentukan-jumlah-cluster-k">
+       Tentukan Jumlah Cluster (K)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pilih-titik-acak-sebanyak-k">
+       Pilih Titik Acak Sebanyak K
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menghitung-jarak-data-dengan-centroid">
+       Menghitung jarak data dengan centroid.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#label-semua-data-berdasarkan-cluster-terdekat">
+       Label Semua Data Berdasarkan Cluster Terdekat
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#gunakan-pca-untuk-mereduksi-dimensi">
+       Gunakan PCA untuk mereduksi dimensi
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#label-ulang-data-berdasarkan-jarak-terdekat-terhadap-centroid-baru">
+       Label Ulang Data Berdasarkan Jarak Terdekat terhadap Centroid Baru
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ulangi-langkah-sampai-tidak-ada-pergerakan-lagi">
+       Ulangi Langkah Sampai Tidak Ada Pergerakan Lagi.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#grafik-hasil-k-means">
+       Grafik hasil K-Means
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kelebihan-k-means">
+     Kelebihan K-Means
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kekurangan-k-means">
+     Kekurangan K-Means
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referensi">
+   Referensi
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Algoritma Clustering</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pengertian-clustering">
+   Pengertian
+   <em>
+    Clustering
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jenis-jenis-algoritma-clustering">
+   Jenis-Jenis Algoritma Clustering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#centeroid-based-clustering">
+     Centeroid-Based Clustering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#density-based-clustering">
+     Density-Based Clustering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distribution-based-clustering">
+     Distribution-Based Clustering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hierarchical-clustering">
+     Hierarchical Clustering
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-clustering">
+   Step
+   <em>
+    Clustering
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#persiapan-data">
+   1. Persiapan Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-modul">
+     Import modul
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#read-data">
+     Read data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#text-pre-processing">
+   2.
+   <em>
+    Text Pre-processing
+   </em>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-pre-processing">
+     Pengertian
+     <em>
+      Pre-processing
+     </em>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-pre-processing">
+     <em>
+      Step Pre-processing
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#case-folding">
+       Case Folding
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tokenizing">
+       Tokenizing
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stopword-removal">
+       Stopword Removal
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stemming">
+       Stemming
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#term-weighting">
+   3. Term Weighting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-means-clustering">
+   4.
+   <em>
+    K-Means Clustering
+   </em>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pengertian-k-means">
+     Pengertian K-Means
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-k-means">
+     Step K-Means
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tentukan-jumlah-cluster-k">
+       Tentukan Jumlah Cluster (K)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pilih-titik-acak-sebanyak-k">
+       Pilih Titik Acak Sebanyak K
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#menghitung-jarak-data-dengan-centroid">
+       Menghitung jarak data dengan centroid.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#label-semua-data-berdasarkan-cluster-terdekat">
+       Label Semua Data Berdasarkan Cluster Terdekat
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#gunakan-pca-untuk-mereduksi-dimensi">
+       Gunakan PCA untuk mereduksi dimensi
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#label-ulang-data-berdasarkan-jarak-terdekat-terhadap-centroid-baru">
+       Label Ulang Data Berdasarkan Jarak Terdekat terhadap Centroid Baru
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ulangi-langkah-sampai-tidak-ada-pergerakan-lagi">
+       Ulangi Langkah Sampai Tidak Ada Pergerakan Lagi.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#grafik-hasil-k-means">
+       Grafik hasil K-Means
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kelebihan-k-means">
+     Kelebihan K-Means
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kekurangan-k-means">
+     Kekurangan K-Means
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referensi">
+   Referensi
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="algoritma-clustering">
+<h1>Algoritma <em>Clustering</em><a class="headerlink" href="#algoritma-clustering" title="Permalink to this headline">#</a></h1>
+<section id="pengertian-clustering">
+<h2>Pengertian <em>Clustering</em><a class="headerlink" href="#pengertian-clustering" title="Permalink to this headline">#</a></h2>
+<p><em>Clustering</em> atau klasterisasi adalah metode pengelompokan data. Menurut Tan, 2006 clustering merupakan  proses pengelompokan data menjadi beberapa <em>cluster</em> atau kelompok sehingga kesamaan data dalam  <em>cluster</em> dimaksimalkan dan kesamaan data antar <em>cluster</em> diminimalkan.</p>
+</section>
+<section id="jenis-jenis-algoritma-clustering">
+<h2>Jenis-Jenis Algoritma Clustering<a class="headerlink" href="#jenis-jenis-algoritma-clustering" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<section id="centeroid-based-clustering">
+<h3>Centeroid-Based Clustering<a class="headerlink" href="#centeroid-based-clustering" title="Permalink to this headline">#</a></h3>
+<p>Metode berbasis centeroid merupakan salah satu metode clustering yang paling banyak digunakan. Mengelompokkan data  ke dalam <em>non-hierarchical clusters</em>. <em>Non-hierarchical clusters</em> adalah tipe cluster efisien yang sensitif terhadap <em>outlier</em>. Tipe ini juga termasuk dalam algoritma iteratif, dimana setiap <em>cluster</em> biasanya  dibentuk terlebih dahulu dari jarak terdekat dengan <em>centroid</em> (pusat cluster). Kemudian data yang sama dikelompokkan sebanyak mungkin. Oleh karena itu, pengelompokan jenis ini telah menjadi metode yang sangat umum [1].</p>
+</section>
+<section id="density-based-clustering">
+<h3>Density-Based Clustering<a class="headerlink" href="#density-based-clustering" title="Permalink to this headline">#</a></h3>
+<p>Metode ini bekerja dengan menggabungkan data yang sama dengan data yang sama lainnya. Metode ini biasanya digunakan untuk mengelompokkan data yang berbeda berdasarkan nilai dimensi yang tinggi. Kemudian <em>cluster</em> dibentuk oleh sumber data yang sama. Data dengan kepadatan yang sama dengan jumlah tertentu dapat disebut grup. Sebaliknya, sejumlah kecil data yang sama disebut <em>outlier</em> atau <em>noise</em> [1].</p>
+</section>
+<section id="distribution-based-clustering">
+<h3>Distribution-Based Clustering<a class="headerlink" href="#distribution-based-clustering" title="Permalink to this headline">#</a></h3>
+<p>Pengelompokan atau asumsi data dilakukan dengan metode distribusi. Oleh karena itu, metode yang satu ini disebut <em>Distribution Based</em>. Peningkatan jarak dari pusat cluster diharapkan dapat mengurangi jumlah data semi-identik. Pengelompokan data biner dapat digunakan untuk mengelompokkan data besar atau kecil. Cara ini juga banyak digunakan karena hasilnya padat dan tingkat identiknya cukup tinggi [1].</p>
+</section>
+<section id="hierarchical-clustering">
+<h3>Hierarchical Clustering<a class="headerlink" href="#hierarchical-clustering" title="Permalink to this headline">#</a></h3>
+<p><em>Hierarchical Clustering</em> atau <em>Connectivity Based Cluster</em>, penggunaannya  mirip dengan cluster berbasis <em>Centroid</em>. Sederhananya, metode ini mengidentifikasi data berdasarkan jarak terdekat pada kondisi diskriminan tertentu. Selain itu, metode ini bekerja pada sistem dasar di mana data terdekat memiliki sifat yang sama dibandingkan dengan data yang jauh. Dendogram merupakan dasar yang digunakan untuk merepresentasikan pengelompokan data [1].</p>
+</section>
+</section>
+<section id="step-clustering">
+<h2>Step <em>Clustering</em><a class="headerlink" href="#step-clustering" title="Permalink to this headline">#</a></h2>
+<p>Tahapan atau langkah-langkah dari <em>Clustering</em> adalah sebagai berikut:</p>
+</section>
+<section id="persiapan-data">
+<h2>1. Persiapan Data<a class="headerlink" href="#persiapan-data" title="Permalink to this headline">#</a></h2>
+<section id="import-modul">
+<h3>Import modul<a class="headerlink" href="#import-modul" title="Permalink to this headline">#</a></h3>
+<p><em>Import</em> modul-modul yang digunakan seperti <em>pandas, numpy, nltk, sklearn</em> dan lain sebagainya.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">string</span> 
+<span class="kn">import</span> <span class="nn">re</span> <span class="c1">#regex library</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">swifter</span>
+
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span> 
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">Sastrawi.Stemmer.StemmerFactory</span> <span class="kn">import</span> <span class="n">StemmerFactory</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</section>
+<section id="read-data">
+<h3>Read data<a class="headerlink" href="#read-data" title="Permalink to this headline">#</a></h3>
+<p>Setelah <em>import modul, read data</em> yang telah di-<em>crawling</em> menggunakan <em>library pandas</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Tf_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;datapta.csv&quot;</span><span class="p">)</span>
+<span class="n">Tf_data</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="text-pre-processing">
+<h2>2. <em>Text Pre-processing</em><a class="headerlink" href="#text-pre-processing" title="Permalink to this headline">#</a></h2>
+<section id="pengertian-pre-processing">
+<h3>Pengertian <em>Pre-processing</em><a class="headerlink" href="#pengertian-pre-processing" title="Permalink to this headline">#</a></h3>
+<p>Pra-pemrosesan teks merupakan proses yang dilakukan untuk mengolah data yang akan dianalisis menjadi data yang lebih mudah dipahami seperti menghapus noise, missing value, dan data yang tidak konsisten. Adapun tahapan dari <em>text pre-processing</em> adalah sebagai berikut:</p>
+</section>
+<section id="step-pre-processing">
+<h3><em>Step Pre-processing</em><a class="headerlink" href="#step-pre-processing" title="Permalink to this headline">#</a></h3>
+<section id="case-folding">
+<h4>Case Folding<a class="headerlink" href="#case-folding" title="Permalink to this headline">#</a></h4>
+<p>Case folding merupakan proses untuk mengubah kalimat dalam teks menjadi huruf kecil [2]. Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="tokenizing">
+<h4>Tokenizing<a class="headerlink" href="#tokenizing" title="Permalink to this headline">#</a></h4>
+<p>Tokenizing merupakan proses untuk membersihkan dan menghapus text spesial seperti simbol, angka, link, whitespace dan lain-lain. Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Hapus teks spesial</span>
+<span class="k">def</span> <span class="nf">remove_text_special</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="c1"># hapus tab, new line, dan back slice</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">t&#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">n&#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">u&#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="c1"># hapus non ASCII (emoticon, chinese word, .etc)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="s1">&#39;replace&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+    <span class="c1"># hapus mention, link, hashtag</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;([@#][A-Za-z0-9]+)|(\w+:\/\/\S+)&quot;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+    <span class="c1"># hapus URL</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+<span class="c1">#hapus angka</span>
+<span class="k">def</span> <span class="nf">remove_number</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span>  <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="c1">#hapus tanda baca</span>
+<span class="k">def</span> <span class="nf">remove_punctuation</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
+
+<span class="c1">#hapus whitespace leading &amp; trailing</span>
+<span class="k">def</span> <span class="nf">remove_whitespace_LT</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="c1">#hapus multiple whitespace into single whitespace</span>
+<span class="k">def</span> <span class="nf">remove_whitespace_multiple</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c1">#hapus single char</span>
+<span class="k">def</span> <span class="nf">remove_singl_char</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\b[a-zA-Z]\b&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="c1">#tokenize </span>
+<span class="k">def</span> <span class="nf">word_tokenize_wrapper</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c1">#menerapkan fungsi-fungsi yang telah dibuat diatas</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_text_special</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_number</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_punctuation</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_whitespace_LT</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_whitespace_multiple</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_singl_char</span><span class="p">)</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">word_tokenize_wrapper</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="stopword-removal">
+<h4>Stopword Removal<a class="headerlink" href="#stopword-removal" title="Permalink to this headline">#</a></h4>
+<p>Stopword removal merupakan proses untuk menghapus kata yang tidak penting dan tidak memiliki makna seperti “yang”, “dari” dan lain-lain [2]. Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stop_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">stopwords_remove</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">]</span>
+    
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">stopwords_remove</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="stemming">
+<h4>Stemming<a class="headerlink" href="#stemming" title="Permalink to this headline">#</a></h4>
+<p>Stemming merupakan proses untuk mendapatkan kata dasar dari suatu kata atau term. Adapun kodennya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#membuat stemmer</span>
+<span class="n">factory</span> <span class="o">=</span> <span class="n">StemmerFactory</span><span class="p">()</span>
+<span class="n">stemmer</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">create_stemmer</span><span class="p">()</span>
+
+<span class="c1">#stemming</span>
+<span class="k">def</span> <span class="nf">stemmed_wrapper</span><span class="p">(</span><span class="n">term</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+
+<span class="n">term_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">document</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">term</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">term_dict</span><span class="p">:</span>
+            <span class="n">term_dict</span><span class="p">[</span><span class="n">term</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
+            
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">term_dict</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">term_dict</span><span class="p">:</span>
+    <span class="n">term_dict</span><span class="p">[</span><span class="n">term</span><span class="p">]</span> <span class="o">=</span> <span class="n">stemmed_wrapper</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">term</span><span class="p">,</span><span class="s2">&quot;:&quot;</span> <span class="p">,</span><span class="n">term_dict</span><span class="p">[</span><span class="n">term</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------&quot;</span><span class="p">)</span>
+
+<span class="c1">#terapkan stemmed term ke dataframe</span>
+<span class="k">def</span> <span class="nf">get_stemmed_term</span><span class="p">(</span><span class="n">document</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">term_dict</span><span class="p">[</span><span class="n">term</span><span class="p">]</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">document</span><span class="p">]</span>
+
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">swifter</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_stemmed_term</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="term-weighting">
+<h2>3. Term Weighting<a class="headerlink" href="#term-weighting" title="Permalink to this headline">#</a></h2>
+<p><em>Term frequency-inverse document frequency</em> (TF-IDF) adalah metode yang digunakan untuk menghitung berat setiap term dengan mencari seberapa jauh hubungan antara kata atau istilah dengan dokumen. Metode TF-IDF adalah efisien dan memiliki hasil yang akurat. Proses yang dilakukan di metode ini untuk menghitung nilai <em>term frequency</em> (TF) dan <em>inverse document frequency</em> (IDF) untuk setiap token di setiap token di setiap dokumen di korpus [2].</p>
+<p>Untuk menentukan besaran nilai IDF maka menggunakan rumus:</p>
+<div class="math notranslate nohighlight">
+\[
+IDF_{i, j}=log \frac{D}{df_{j}}
+\]</div>
+<p>Dimana,</p>
+<p>D : jumlah semua dokumen.</p>
+<p>dfj : jumlah dokumen yang mengandung term (j).</p>
+<p>Sehingga persamaan dari term frequency-inverse document frequency adalah sebagai berikut:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+w_{i, j}=t f_{i, j} \times {idf_{j}} \\
+w_{i, j}=t f_{i, j} \times \log \frac{D}{df_{j}}
+\end{split}\]</div>
+<p>Dimana,</p>
+<p>Wij : bobot term (j) terhadap (i).</p>
+<p>tfij : jumlah kemunculan term (j) dalam dokumen (i).</p>
+<p>Adapun <em>code</em>nya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+<span class="n">pta</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;TP_Abstraksi&#39;</span><span class="p">]:</span>
+    <span class="n">isi</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">isi</span> <span class="o">+=</span> <span class="n">term</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span>
+    <span class="n">pta</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">isi</span><span class="p">)</span>
+
+<span class="n">vectorizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">pta</span><span class="p">)</span>
+<span class="n">vect</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">pta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vect</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Tf_data[‘TP_Abstraksi’] merupakan output dari proses text pre-processing</p></li>
+<li><p>vect digunakan sebagai input untuk langkah selanjutnya yaitu K-Means.</p></li>
+</ul>
+</section>
+<section id="k-means-clustering">
+<h2>4. <em>K-Means Clustering</em><a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">#</a></h2>
+<section id="pengertian-k-means">
+<h3>Pengertian K-Means<a class="headerlink" href="#pengertian-k-means" title="Permalink to this headline">#</a></h3>
+<p>K-means merupakan  algoritma pembelajaran yang tidak terawasi. K-Means digunakan untuk mengelompokkan data ke dalam data cluster dan dapat menerima data tanpa ada label kategori. Adapun langkah-langkah dari K-Means adalah sebagai berikut:</p>
+</section>
+<section id="step-k-means">
+<h3>Step K-Means<a class="headerlink" href="#step-k-means" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<section id="tentukan-jumlah-cluster-k">
+<h4>Tentukan Jumlah Cluster (K)<a class="headerlink" href="#tentukan-jumlah-cluster-k" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="pilih-titik-acak-sebanyak-k">
+<h4>Pilih Titik Acak Sebanyak K<a class="headerlink" href="#pilih-titik-acak-sebanyak-k" title="Permalink to this headline">#</a></h4>
+<p>Adapun codenya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">true_k</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</section>
+<section id="menghitung-jarak-data-dengan-centroid">
+<h4>Menghitung jarak data dengan centroid.<a class="headerlink" href="#menghitung-jarak-data-dengan-centroid" title="Permalink to this headline">#</a></h4>
+<p>Adapun persamaan <em>Euclidean Distance</em> yang digunakan adalah sebagai berikut:</p>
+</section>
+<div class="math notranslate nohighlight">
+\[
+d=\sqrt{\left(x_{2}-x_{1}\right)^{2}+\left(y_{2}-y_{1}\right)^{2}}
+\]</div>
+<p>Adapun codenya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">true_k</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">vect</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<section id="label-semua-data-berdasarkan-cluster-terdekat">
+<h4>Label Semua Data Berdasarkan Cluster Terdekat<a class="headerlink" href="#label-semua-data-berdasarkan-cluster-terdekat" title="Permalink to this headline">#</a></h4>
+<p>Adapun codenya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Top terms per cluster:&quot;</span><span class="p">)</span>
+<span class="n">order_centroids</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">terms</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">true_k</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cluster </span><span class="si">%d</span><span class="s2">:&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">),</span>
+    <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">order_centroids</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">terms</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="gunakan-pca-untuk-mereduksi-dimensi">
+<h4>Gunakan PCA untuk mereduksi dimensi<a class="headerlink" href="#gunakan-pca-untuk-mereduksi-dimensi" title="Permalink to this headline">#</a></h4>
+<p>Adapun codenya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="c1"># pass vector to the pca and store the reduced vectors into pca_vecs</span>
+<span class="n">pca_vecs</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">vect</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">pca_vecs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">pca_vecs</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#menambahkan cluster ke dataset</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">labels_</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
+<span class="n">Tf_data</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x1</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="label-ulang-data-berdasarkan-jarak-terdekat-terhadap-centroid-baru">
+<h4>Label Ulang Data Berdasarkan Jarak Terdekat terhadap Centroid Baru<a class="headerlink" href="#label-ulang-data-berdasarkan-jarak-terdekat-terhadap-centroid-baru" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="ulangi-langkah-sampai-tidak-ada-pergerakan-lagi">
+<h4>Ulangi Langkah Sampai Tidak Ada Pergerakan Lagi.<a class="headerlink" href="#ulangi-langkah-sampai-tidak-ada-pergerakan-lagi" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="grafik-hasil-k-means">
+<h4>Grafik hasil K-Means<a class="headerlink" href="#grafik-hasil-k-means" title="Permalink to this headline">#</a></h4>
+<p>Adapun codenya adalah sebagai berikut:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hasil KMeans Clustering&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X0&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
+
+<span class="c1"># create scatter plot with seaborn, where hue is the class used to group the data</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">Tf_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;cluster&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="kelebihan-k-means">
+<h3>Kelebihan K-Means<a class="headerlink" href="#kelebihan-k-means" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Algoritma yang sederhana dan mudah dipahami</p></li>
+<li><p>Cepat pemrosesannya</p></li>
+<li><p>Tersedia di berbagai tools atau software</p></li>
+<li><p>Mudah dalam penerapannya</p></li>
+<li><p>Selalu memberikan hasil, apapun datanya [3].</p></li>
+</ul>
+</section>
+<section id="kekurangan-k-means">
+<h3>Kekurangan K-Means<a class="headerlink" href="#kekurangan-k-means" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Hasilnya sensitif terhadap jumlah cluster (K).</p></li>
+<li><p>Cepat pemrosesannya</p></li>
+<li><p>Sensitif terhadap pencilan atau outlier.</p></li>
+<li><p>Sensitif terhadap data dengan variabel yang memiliki skala berbeda [3].</p></li>
+</ul>
+</section>
+</section>
+<section id="referensi">
+<h2>Referensi<a class="headerlink" href="#referensi" title="Permalink to this headline">#</a></h2>
+<p>[1] : Definisi Clustering, Manfaat, Jenis, Cara Kerja dan Contoh Penggunaannya. Website: <a class="reference external" href="https://www.pengadaanbarang.co.id/2022/03/manfaat-clustering-adalah.html">https://www.pengadaanbarang.co.id/2022/03/manfaat-clustering-adalah.html</a>, diakses pada 30 Juni 2022.</p>
+<p>[2] : Fitri, H., dkk (2021). Topic Modeling in the News Document on Sustainable. Tersedia dari <a class="reference external" href="http://jurnal.ugm.ac.id">jurnal.ugm.ac.id</a> [<a class="reference external" href="https://www.jurnal.ugm.ac.id/ijitee/article/view/67467/32203">https://www.jurnal.ugm.ac.id/ijitee/article/view/67467/32203</a>].</p>
+<p>[3] : K-means Clustering: Pengertian, Metode Algoritma, Beserta Contoh. Website: <a class="reference external" href="https://geospasialis.com/k-means-clustering/">https://geospasialis.com/k-means-clustering/</a>, diakses 30 Juni 2022.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="lsa.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><em>Latent Semantic Analysis</em> (LSA)</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Firda Ayu S<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
